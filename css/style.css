@@ -140,7 +140,7 @@ body {
   font-family: "微软雅黑", 'Microsoft JhengHei', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
   font-size: 16px;
   background: #3f3f3f;
-  color: #999;
+  color: #f5fffa;
   -webkit-overflow-scrolling: touch;
 }
 ::selection {
@@ -250,7 +250,7 @@ a {
 }
 #container .left-col {
   background: url("../img/bg.jpg") #515457;
-  width: 300px;
+  width: '' px;
   position: fixed;
   opacity: 1;
   -webkit-transition: all 0.2s ease-in;
@@ -3082,7 +3082,7 @@ a.gitment-editor-footer-tip:hover {
   padding: 1px 3px;
   margin: 0 3px;
   color: #999;
-  background: rgba(217,83,79,0.45);
+  background: #002b36;
   border: 1px dashed #ccc;
   border-radius: 3px;
   font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
@@ -3178,7 +3178,7 @@ a.gitment-editor-footer-tip:hover {
 }
 .article-entry code {
   color: #999;
-  background: rgba(217,83,79,0.45);
+  background: #002b36;
   padding: 1px 3px;
   border-radius: 5px;
 }
@@ -3687,7 +3687,7 @@ a.gitment-editor-footer-tip:hover {
   box-sizing: border-box;
 }
 .article-entry code {
-  background: rgba(217,83,79,0.45);
+  background: #002b36;
   padding: 0 0.3em;
   border: none;
 }
@@ -3710,7 +3710,7 @@ a.gitment-editor-footer-tip:hover {
   border-radius: 5px;
   font-family: Consolas, "Courier New", Courier;
   text-shadow: none;
-  background-color: rgba(217,83,79,0.45);
+  background-color: #002b36;
   word-wrap: break-word;
   white-space: pre;
 }
