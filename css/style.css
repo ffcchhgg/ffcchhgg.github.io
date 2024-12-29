@@ -144,8 +144,8 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 ::selection {
-  color: #fff;
-  background: #4094c7;
+  color: #000;
+  background: #f5fffa;
 }
 h2,
 h3,
