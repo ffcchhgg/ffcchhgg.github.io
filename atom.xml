@@ -56,7 +56,7 @@
     <link href="http://example.com/2024/12/28/b/"/>
     <id>http://example.com/2024/12/28/b/</id>
     <published>2024-12-27T17:48:31.000Z</published>
-    <updated>2024-12-27T17:49:44.311Z</updated>
+    <updated>2024-12-30T05:27:25.435Z</updated>
     
     <content type="html"><![CDATA[<h2 id="好困啊"><a href="#好困啊" class="headerlink" title="好困啊"></a>好困啊</h2><h1 id="明天要开始复习考试内容啦！！！"><a href="#明天要开始复习考试内容啦！！！" class="headerlink" title="明天要开始复习考试内容啦！！！"></a>明天要开始复习考试内容啦！！！</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">加油，你是最棒的！！！</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -68,6 +68,8 @@
     
     
     
+    
+    <category term="Daily" scheme="http://example.com/tags/Daily/"/>
     
   </entry>
   
