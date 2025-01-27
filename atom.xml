@@ -6,7 +6,7 @@
   <link href="https://www.ffcchhgg.cn/atom.xml" rel="self"/>
   
   <link href="https://www.ffcchhgg.cn/"/>
-  <updated>2025-01-14T04:24:53.248Z</updated>
+  <updated>2025-01-27T09:33:57.262Z</updated>
   <id>https://www.ffcchhgg.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用gdb调试代码</title>
+    <link href="https://www.ffcchhgg.cn/2025/01/27/%E4%BD%BF%E7%94%A8gdb%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/"/>
+    <id>https://www.ffcchhgg.cn/2025/01/27/%E4%BD%BF%E7%94%A8gdb%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/</id>
+    <published>2025-01-27T09:33:10.000Z</published>
+    <updated>2025-01-27T09:33:57.262Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>首先加入调试信息：<strong>g++ -g -o pp pp.cpp</strong></li></ol><p>2.启动gdb</p><p>1)在文件内部的终端内输入  <strong>gdb</strong>  </p><p>2)或者在win+R+回车后找到文件所在目录 (或者在Git Bash中)并输入    <strong>gdb .&#x2F;文件名</strong></p><p>3.设置断点</p><p>1)在某一行设置断点：    <strong>(gdb) break 15</strong>       # 在第 15 行设置断点</p><p>2)在函数入口设置断点：    <strong>(gdb) break my_function</strong>     # 在函数 my_function 的入口设置断点</p><p>4.在gdb中启动程序：</p><p>1)代码无参数： <strong>(gdb) run</strong>  </p><p>2)代码有参数： <strong>(gdb) run  avg1 avg2…</strong>（只需要在run后面增加参数的值即可）</p><p>5.执行代码</p><p>1)<strong>(gdb)next</strong>:  单步执行，跳过函数调用</p><p>2)<strong>(gdb)step</strong>:   单步执行，进入函数</p><p>3)<strong>(gdb)continue</strong>:  继续执行直到下一个断点</p><ol><li>查看变量的值：**(gdb)print &lt;变量名&gt;**</li><li>查看当前调用栈：**<code>(gdb)backtrace</code> 或 <code>(gdb)bt</code>**</li><li>修改变量的值：**<code>(gdb)set &lt;variable_name&gt; = &lt;new_value&gt;</code>**</li><li>退出 GDB：**<code>(gdb)quit</code>**</li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;首先加入调试信息：&lt;strong&gt;g++ -g -o pp pp.cpp&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;2.启动gdb&lt;/p&gt;
+&lt;p&gt;1)在文件内部的终端内输入  &lt;strong&gt;gdb&lt;/strong&gt;  &lt;/p&gt;
+&lt;p&gt;2)或者在win+R+</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>another try</title>

@@ -167,6 +167,12 @@
       <h3 class="widget-title">Recent Posts</h3>
       <ul>
         
+          <a class="recent-link" href="/2025/01/27/%E4%BD%BF%E7%94%A8gdb%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/" title="使用gdb调试代码" >
+            <div class="recent-link-text">
+              使用gdb调试代码
+            </div>
+          </a>
+        
           <a class="recent-link" href="/2024/12/28/another-try/" title="another try" >
             <div class="recent-link-text">
               another try
@@ -201,6 +207,95 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-使用gdb调试代码" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/01/27/%E4%BD%BF%E7%94%A8gdb%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/">使用gdb调试代码</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-01-27T09:33:10.000Z" itemprop="datePublished">2025-01-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            484 words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              
+首先加入调试信息：g++ -g -o pp pp.cpp
+
+2.启动gdb
+1)在文件内部的终端内输入  gdb  
+2)或者在win+R+回车后找到文件所在目录 (或者在Git Bash中)并输入    gdb .&#x2F;文件名
+3.设置断点
+1)在某一行设置断点：    (gdb) break 15       # 在第 15 行设置断点
+2)在函数入口设置断点：    (gdb) break my_function     # 在函数 my_function 的入口设置断点
+4.在gdb中启动程序：
+1)代码无参数： (gdb) run  
+2)代码有参数： (gdb) run  avg1 avg2…（只需要在run后面增加参数的值即可）
+5.执行代码
+1)(gdb)next:  单步执行，跳过函数调用
+2)(gdb)step:   单步执行，进入函数
+3)(gdb)continue:  继续执行直到下一个断点
+
+查看变量的值：**(gdb)print &lt;变量名&gt;**
+查看当前调用栈：**(gdb)backtrace 或 (gdb)bt**
+修改变量的值：...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/01/27/%E4%BD%BF%E7%94%A8gdb%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
    
 
 
