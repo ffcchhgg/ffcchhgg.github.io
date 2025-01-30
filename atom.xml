@@ -6,7 +6,7 @@
   <link href="https://www.ffcchhgg.cn/atom.xml" rel="self"/>
   
   <link href="https://www.ffcchhgg.cn/"/>
-  <updated>2025-01-30T03:53:07.700Z</updated>
+  <updated>2025-01-30T03:58:06.988Z</updated>
   <id>https://www.ffcchhgg.cn/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://www.ffcchhgg.cn/2025/01/27/%E4%BD%BF%E7%94%A8gdb%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/"/>
     <id>https://www.ffcchhgg.cn/2025/01/27/%E4%BD%BF%E7%94%A8gdb%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/</id>
     <published>2025-01-27T09:33:10.000Z</published>
-    <updated>2025-01-30T03:53:07.700Z</updated>
+    <updated>2025-01-30T03:58:06.988Z</updated>
     
-    <content type="html"><![CDATA[<ol><li><p>首先加入调试信息：<code>g++ -g -o pp pp.cpp</code></p></li><li></li><li><p>启动gdb</p><p>1)在文件内部的终端内输入  <code>gdb</code></p><p>2)或者在win+R+回车后找到文件所在目录 (或者在Git Bash中)并输入    <code>gdb ./文件名</code></p></li><li><p>设置断点</p><p>1)在某一行设置断点：    <code>(gdb) break 15</code>       <em>在第 15 行设置断点</em></p><p>2)在函数入口设置断点：    <code>(gdb) break my_function</code>     <em>在函数 my_function 的入口设置断点</em></p></li><li><p>在gdb中启动程序：</p><p>1)代码无参数： <code>(gdb) run</code>  </p><p>2)代码有参数： <code>(gdb) run  avg1 avg2…</code>（只需要在run后面增加参数的值即可）</p></li><li><p>执行代码</p><p>1)<code>(gdb)next</code>:  单步执行，跳过函数调用</p><p>2)<code>(gdb)step</code>:   单步执行，进入函数</p><p>3)<code>(gdb)continue</code>:  继续执行直到下一个断点</p></li><li><p>查看变量的值：<code>(gdb)print &lt;变量名&gt;</code></p></li><li><p>查看当前调用栈：<code>(gdb)backtrace</code> 或 <code>(gdb)bt</code></p></li><li><p>修改变量的值：___<code>(gdb)set &lt;variable_name&gt; = &lt;new_value&gt;</code>__</p></li><li><p>退出 GDB：__<code>(gdb)quit</code>__</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<ol><li><p>首先加入调试信息：<code>g++ -g -o pp pp.cpp</code></p></li><li><p>启动gdb</p><p>1)在文件内部的终端内输入  <code>gdb</code></p><p>2)或者在win+R+回车后找到文件所在目录 (或者在Git Bash中)并输入    <code>gdb ./文件名</code></p></li><li><p>设置断点</p><p>1)在某一行设置断点：    <font color=red><strong><code>(gdb) break 15</code></strong></font>       <em>在第 15 行设置断点</em></p><p>2)在函数入口设置断点：    <code>(gdb) break my_function</code>     <em>在函数 my_function 的入口设置断点</em></p></li><li><p>在gdb中启动程序：</p><p>1)代码无参数： <code>(gdb) run</code>  </p><p>2)代码有参数： <code>(gdb) run  avg1 avg2…</code>（只需要在run后面增加参数的值即可）</p></li><li><p>执行代码</p><p>1)<code>(gdb)next</code>:  单步执行，跳过函数调用</p><p>2)<code>(gdb)step</code>:   单步执行，进入函数</p><p>3)<code>(gdb)continue</code>:  继续执行直到下一个断点</p></li><li><p>查看变量的值：<code>(gdb)print &lt;变量名&gt;</code></p></li><li><p>查看当前调用栈：<code>(gdb)backtrace</code> 或 <code>(gdb)bt</code></p></li><li><p>修改变量的值：<code>(gdb)set &lt;variable_name&gt; = &lt;new_value&gt;</code></p></li><li><p>退出 GDB：<code>(gdb)quit</code></p></li></ol>]]></content>
     
     
       
@@ -31,10 +31,9 @@
     <summary type="html">&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;首先加入调试信息：&lt;code&gt;g++ -g -o pp pp.cpp&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;启动gdb&lt;/p&gt;
 &lt;p&gt;1)在文件内部的终端内输入  &lt;code&gt;gdb&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;2)或者在wi</summary>
+&lt;p&gt;2)或者在win+R+回车后找到文</summary>
       
     
     
