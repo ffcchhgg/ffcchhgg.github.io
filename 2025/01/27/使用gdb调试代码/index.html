@@ -20,15 +20,15 @@
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="首先加入调试信息：g++ -g -o pp pp.cpp  2.启动gdb 1)在文件内部的终端内输入  gdb   2)或者在win+R+回车后找到文件所在目录 (或者在Git Bash中)并输入    gdb .&#x2F;文件名 3.设置断点 1)在某一行设置断点：    (gdb) break 15       # 在第 15 行设置断点 2)在函数入口设置断点：    (gdb) br">
+  <meta name="description" content="首先加入调试信息：g++ -g -o pp pp.cpp   启动gdb 1)在文件内部的终端内输入  gdb 2)或者在win+R+回车后找到文件所在目录 (或者在Git Bash中)并输入    gdb .&#x2F;文件名  设置断点 1)在某一行设置断点：    (gdb) break 15       在第 15 行设置断点 2)在函数入口设置断点：    (gdb) break my_func">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用gdb调试代码">
 <meta property="og:url" content="https://www.ffcchhgg.cn/2025/01/27/%E4%BD%BF%E7%94%A8gdb%E8%B0%83%E8%AF%95%E4%BB%A3%E7%A0%81/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="首先加入调试信息：g++ -g -o pp pp.cpp  2.启动gdb 1)在文件内部的终端内输入  gdb   2)或者在win+R+回车后找到文件所在目录 (或者在Git Bash中)并输入    gdb .&#x2F;文件名 3.设置断点 1)在某一行设置断点：    (gdb) break 15       # 在第 15 行设置断点 2)在函数入口设置断点：    (gdb) br">
+<meta property="og:description" content="首先加入调试信息：g++ -g -o pp pp.cpp   启动gdb 1)在文件内部的终端内输入  gdb 2)或者在win+R+回车后找到文件所在目录 (或者在Git Bash中)并输入    gdb .&#x2F;文件名  设置断点 1)在某一行设置断点：    (gdb) break 15       在第 15 行设置断点 2)在函数入口设置断点：    (gdb) break my_func">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-01-27T09:33:10.000Z">
-<meta property="article:modified_time" content="2025-01-27T09:33:57.262Z">
+<meta property="article:modified_time" content="2025-01-30T03:53:07.700Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -245,7 +245,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            484 words 
+            462 words 
           </div>
         </div>
         
@@ -253,26 +253,34 @@
       <div class="e-content article-entry" itemprop="articleBody">
         
           <ol>
-<li>首先加入调试信息：<strong>g++ -g -o pp pp.cpp</strong></li>
-</ol>
-<p>2.启动gdb</p>
-<p>1)在文件内部的终端内输入  <strong>gdb</strong>  </p>
-<p>2)或者在win+R+回车后找到文件所在目录 (或者在Git Bash中)并输入    <strong>gdb .&#x2F;文件名</strong></p>
-<p>3.设置断点</p>
-<p>1)在某一行设置断点：    <strong>(gdb) break 15</strong>       # 在第 15 行设置断点</p>
-<p>2)在函数入口设置断点：    <strong>(gdb) break my_function</strong>     # 在函数 my_function 的入口设置断点</p>
-<p>4.在gdb中启动程序：</p>
-<p>1)代码无参数： <strong>(gdb) run</strong>  </p>
-<p>2)代码有参数： <strong>(gdb) run  avg1 avg2…</strong>（只需要在run后面增加参数的值即可）</p>
-<p>5.执行代码</p>
-<p>1)<strong>(gdb)next</strong>:  单步执行，跳过函数调用</p>
-<p>2)<strong>(gdb)step</strong>:   单步执行，进入函数</p>
-<p>3)<strong>(gdb)continue</strong>:  继续执行直到下一个断点</p>
-<ol>
-<li>查看变量的值：**(gdb)print &lt;变量名&gt;**</li>
-<li>查看当前调用栈：**<code>(gdb)backtrace</code> 或 <code>(gdb)bt</code>**</li>
-<li>修改变量的值：**<code>(gdb)set &lt;variable_name&gt; = &lt;new_value&gt;</code>**</li>
-<li>退出 GDB：**<code>(gdb)quit</code>**</li>
+<li><p>首先加入调试信息：<code>g++ -g -o pp pp.cpp</code></p>
+</li>
+<li></li>
+<li><p>启动gdb</p>
+<p>1)在文件内部的终端内输入  <code>gdb</code></p>
+<p>2)或者在win+R+回车后找到文件所在目录 (或者在Git Bash中)并输入    <code>gdb ./文件名</code></p>
+</li>
+<li><p>设置断点</p>
+<p>1)在某一行设置断点：    <code>(gdb) break 15</code>       <em>在第 15 行设置断点</em></p>
+<p>2)在函数入口设置断点：    <code>(gdb) break my_function</code>     <em>在函数 my_function 的入口设置断点</em></p>
+</li>
+<li><p>在gdb中启动程序：</p>
+<p>1)代码无参数： <code>(gdb) run</code>  </p>
+<p>2)代码有参数： <code>(gdb) run  avg1 avg2…</code>（只需要在run后面增加参数的值即可）</p>
+</li>
+<li><p>执行代码</p>
+<p>1)<code>(gdb)next</code>:  单步执行，跳过函数调用</p>
+<p>2)<code>(gdb)step</code>:   单步执行，进入函数</p>
+<p>3)<code>(gdb)continue</code>:  继续执行直到下一个断点</p>
+</li>
+<li><p>查看变量的值：<code>(gdb)print &lt;变量名&gt;</code></p>
+</li>
+<li><p>查看当前调用栈：<code>(gdb)backtrace</code> 或 <code>(gdb)bt</code></p>
+</li>
+<li><p>修改变量的值：___<code>(gdb)set &lt;variable_name&gt; = &lt;new_value&gt;</code>__</p>
+</li>
+<li><p>退出 GDB：__<code>(gdb)quit</code>__</p>
+</li>
 </ol>
 
         

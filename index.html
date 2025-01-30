@@ -240,7 +240,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            484 words 
+            462 words 
           </div>
         </div>
         
@@ -252,23 +252,29 @@
               
 首先加入调试信息：g++ -g -o pp pp.cpp
 
-2.启动gdb
-1)在文件内部的终端内输入  gdb  
-2)或者在win+R+回车后找到文件所在目录 (或者在Git Bash中)并输入    gdb .&#x2F;文件名
-3.设置断点
-1)在某一行设置断点：    (gdb) break 15       # 在第 15 行设置断点
-2)在函数入口设置断点：    (gdb) break my_function     # 在函数 my_function 的入口设置断点
-4.在gdb中启动程序：
+
+启动gdb
+1)在文件内部的终端内输入  gdb
+2)或者在win+R+回车后找到文件所在目录 (或者在Git Bash中)并输入    gdb ./文件名
+
+设置断点
+1)在某一行设置断点：    (gdb) break 15       在第 15 行设置断点
+2)在函数入口设置断点：    (gdb) break my_function     在函数 my_function 的入口设置断点
+
+在gdb中启动程序：
 1)代码无参数： (gdb) run  
 2)代码有参数： (gdb) run  avg1 avg2…（只需要在run后面增加参数的值即可）
-5.执行代码
+
+执行代码
 1)(gdb)next:  单步执行，跳过函数调用
 2)(gdb)step:   单步执行，进入函数
 3)(gdb)continue:  继续执行直到下一个断点
 
-查看变量的值：**(gdb)print &lt;变量名&gt;**
-查看当前调用栈：**(gdb)backtrace 或 (gdb)bt**
-修改变量的值：...
+查看变量的值：(gdb)print &lt;变量名&gt;
+
+查看当前调用栈：(gdb)backtrace 或 (gdb)bt
+
+修改变量的值：___(gdb)set &lt;varia...
             
           </div>
         
