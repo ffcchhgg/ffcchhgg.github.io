@@ -20,16 +20,17 @@
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="std::vectorstd::vector 容器的一个成员函数都有哪些，具体怎么使用 简介：是一个动态数组，提供高效的随机访问和动态扩容功能。 （内部使用连续的内存块存储元素，通过索引快速访问元素的时间复杂度为O(1)）（会自动管理内存，当元素数量超过当前容量时，会自动分配更大的内存块并复制元素）（支持迭代器，可方便地遍历容器中的元素）（泛型编程，是一个模板类，可存储任意类型的元素，如int ,">
+  <meta name="description" content="std::vector简介：是一个动态数组，提供高效的随机访问和动态扩容功能。（内部使用连续的内存块存储元素，通过索引快速访问元素的时间复杂度为O(1)）（会自动管理内存，当元素数量超过当前容量时，会自动分配更大的内存块并复制元素）（支持迭代器，可方便地遍历容器中的元素）（泛型编程，是一个模板类，可存储任意类型的元素，如int ,double, std::string 等） 12345678910">
 <meta property="og:type" content="article">
 <meta property="og:title" content="STLDay1">
 <meta property="og:url" content="https://www.ffcchhgg.cn/2025/02/04/STLDay1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="std::vectorstd::vector 容器的一个成员函数都有哪些，具体怎么使用 简介：是一个动态数组，提供高效的随机访问和动态扩容功能。 （内部使用连续的内存块存储元素，通过索引快速访问元素的时间复杂度为O(1)）（会自动管理内存，当元素数量超过当前容量时，会自动分配更大的内存块并复制元素）（支持迭代器，可方便地遍历容器中的元素）（泛型编程，是一个模板类，可存储任意类型的元素，如int ,">
+<meta property="og:description" content="std::vector简介：是一个动态数组，提供高效的随机访问和动态扩容功能。（内部使用连续的内存块存储元素，通过索引快速访问元素的时间复杂度为O(1)）（会自动管理内存，当元素数量超过当前容量时，会自动分配更大的内存块并复制元素）（支持迭代器，可方便地遍历容器中的元素）（泛型编程，是一个模板类，可存储任意类型的元素，如int ,double, std::string 等） 12345678910">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-02-04T03:33:20.000Z">
-<meta property="article:modified_time" content="2025-02-04T06:28:48.166Z">
+<meta property="article:modified_time" content="2025-02-04T06:30:19.620Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="STL">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -159,7 +160,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">Tags</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Daily/" rel="tag">Daily</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Daily/" rel="tag">Daily</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li></ul>
     </div>
   </div>
 
@@ -245,16 +246,16 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            6k words 
+            5.9k words 
           </div>
         </div>
         
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li></ul>
+
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <h1 id="std-vector"><a href="#std-vector" class="headerlink" title="std::vector"></a>std::vector</h1><p>std::vector 容器的一个成员函数都有哪些，具体怎么使用</p>
-<p>简介：是一个动态数组，提供高效的随机访问和动态扩容功能。</p>
-<p>（内部使用连续的内存块存储元素，通过索引快速访问元素的时间复杂度为O(1)）（会自动管理内存，当元素数量超过当前容量时，会自动分配更大的内存块并复制元素）（支持迭代器，可方便地遍历容器中的元素）（泛型编程，是一个模板类，可存储任意类型的元素，如int ,double, std::string 等）</p>
+          <h1 id="std-vector"><a href="#std-vector" class="headerlink" title="std::vector"></a>std::vector</h1><p>简介：是一个动态数组，提供高效的随机访问和动态扩容功能。<br>（内部使用连续的内存块存储元素，通过索引快速访问元素的时间复杂度为O(1)）<br>（会自动管理内存，当元素数量超过当前容量时，会自动分配更大的内存块并复制元素）<br>（支持迭代器，可方便地遍历容器中的元素）<br>（泛型编程，是一个模板类，可存储任意类型的元素，如int ,double, std::string 等）</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; vec = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 添加元素</span></span><br><span class="line">    vec.<span class="built_in">push_back</span>(<span class="number">4</span>);</span><br><span class="line">    vec.<span class="built_in">insert</span>(vec.<span class="built_in">begin</span>() + <span class="number">2</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 删除元素</span></span><br><span class="line">    vec.<span class="built_in">pop_back</span>(); <span class="comment">//删除尾部元素</span></span><br><span class="line">    vec.<span class="built_in">erase</span>(vec.<span class="built_in">begin</span>() + <span class="number">1</span>); <span class="comment">//删除第二个元素</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 访问元素</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;First element: &quot;</span> &lt;&lt; vec.<span class="built_in">front</span>() &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Last element: &quot;</span> &lt;&lt; vec.<span class="built_in">back</span>() &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取大小和容量</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Size: &quot;</span> &lt;&lt; vec.<span class="built_in">size</span>() &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Capacity: &quot;</span> &lt;&lt; vec.<span class="built_in">capacity</span>() &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历元素</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Elements: &quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i : vec) &#123;</span><br><span class="line">        std::cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="范围-based-for-循环"><a href="#范围-based-for-循环" class="headerlink" title="范围-based for 循环"></a>范围-based for 循环</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (元素类型 变量名 : 容器) &#123;</span><br><span class="line">    <span class="comment">// 使用变量名访问元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><font color=red><strong>注：</strong></font><br>·范围-based for 循环不仅适用于 std::vector，还适用于其他 STL 容器（如 std::list、std::map 等）以及数组。<br>·代码块的结束必须在新的一行使用三个反引号，而且前后不能有多余的空格或其他字符，只需要简单地写 ‘ &#96;&#96;&#96; ’。<br>·默认情况下，范围-based for 循环是只读的。如果需要修改容器中的元素，需要使用引用：</p>

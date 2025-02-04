@@ -155,7 +155,7 @@
   <div class="widget-wrap">
     <div class="widget">
       <h3 class="widget-title">Tags</h3>
-      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Daily/" rel="tag">Daily</a></li></ul>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Daily/" rel="tag">Daily</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li></ul>
     </div>
   </div>
 
@@ -240,19 +240,19 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            6k words 
+            5.9k words 
           </div>
         </div>
         
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li></ul>
+
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
           <div class="truncate-text">
             
-              std::vectorstd::vector 容器的一个成员函数都有哪些，具体怎么使用
-简介：是一个动态数组，提供高效的随机访问和动态扩容功能。
-（内部使用连续的内存块存储元素，通过索引快速访问元素的时间复杂度为O(1)）（会自动管理内存，当元素数量超过当前容量时，会自动分配更大的内存块并复制元素）（支持迭代器，可方便地遍历容器中的元素）（泛型编程，是一个模板类，可存储任意类型的元素，如int ,double, std::string 等）
-1234567891011121314151617181920212223242526272829303132#include &lt;iostream&gt;#include &lt;vector&gt;int main() &#123;    // 初始化    std::vector&lt;int&gt; vec = &#123;1, 2, 3&#125;;    // 添加元素    vec.push_back(4);    vec.insert(vec.begin() + 2, 10);    // 删除元素    vec.pop_...
+              std::vector简介：是一个动态数组，提供高效的随机访问和动态扩容功能。（内部使用连续的内存块存储元素，通过索引快速访问元素的时间复杂度为O(1)）（会自动管理内存，当元素数量超过当前容量时，会自动分配更大的内存块并复制元素）（支持迭代器，可方便地遍历容器中的元素）（泛型编程，是一个模板类，可存储任意类型的元素，如int ,double, std::string 等）
+1234567891011121314151617181920212223242526272829303132#include &lt;iostream&gt;#include &lt;vector&gt;int main() &#123;    // 初始化    std::vector&lt;int&gt; vec = &#123;1, 2, 3&#125;;    // 添加元素    vec.push_back(4);    vec.insert(vec.begin() + 2, 10);    // 删除元素    vec.pop_back(); //删除尾部元素    vec.erase(vec....
             
           </div>
         
