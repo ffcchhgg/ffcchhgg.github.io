@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>ICS-PA0(开发环境配置) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="在这门课中我们需要一个具有图形界面的Linux系统来运行NEMU这个模拟器一般我们选择Ubuntu作为Linux系统。之前我已经通过WSL2安装了Ubuntu系统，就直接使用，这里不再赘述。（除了WSL2安装外，还可以通过安装双系统和安装虚拟机来在Windows系统上安装Linux系统）（通过wsl -l -v来看安装了哪些） 安装工具在GNU&#x2F;Linux中，我们可以通过一个命令下载和安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ICS-PA0(开发环境配置)">
+<meta property="og:url" content="https://www.ffcchhgg.cn/2025/08/01/ICS-PA0-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在这门课中我们需要一个具有图形界面的Linux系统来运行NEMU这个模拟器一般我们选择Ubuntu作为Linux系统。之前我已经通过WSL2安装了Ubuntu系统，就直接使用，这里不再赘述。（除了WSL2安装外，还可以通过安装双系统和安装虚拟机来在Windows系统上安装Linux系统）（通过wsl -l -v来看安装了哪些） 安装工具在GNU&#x2F;Linux中，我们可以通过一个命令下载和安">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-1.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-2.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-3.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-4.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-5.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-6.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-7.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-8.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-9.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-10.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-11.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-12.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-13.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-14.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-15.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-16.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-17.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-18.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-19.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/PA0-20.png">
+<meta property="article:published_time" content="2025-08-01T08:31:06.000Z">
+<meta property="article:modified_time" content="2025-08-06T10:56:11.219Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.ffcchhgg.cn/imgff/PA0-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/images/banner.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Hexo </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/images/avatar.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Ruofan Wang </div>
+      <div class="dot"></div>
+      <div class="subtitle">Betelgeuse </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/ffcchhgg" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/%E9%AB%98%E7%A8%8B/">
+                高程
+                <div class="category-count">3</div>
+            </a>
+        <div class="children"><div class="category-box">
+            <a class="category-link" href="/categories/%E9%AB%98%E7%A8%8B/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">
+                第二章
+                <div class="category-count">3</div>
+            </a>
+        </div></div>
+            <a class="category-link" href="/categories/Daily/">
+                Daily
+                <div class="category-count">1</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Daily/" rel="tag">Daily</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%AB%98%E7%A8%8B/" rel="tag">高程</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2025/08/01/ICS-PA0-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="ICS-PA0(开发环境配置)" >
+            <div class="recent-link-text">
+              ICS-PA0(开发环境配置)
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/07/23/github%E4%BB%93%E5%BA%93%E5%8D%8F%E4%BD%9C%E6%B5%81%E7%A8%8B/" title="github仓库协作流程" >
+            <div class="recent-link-text">
+              github仓库协作流程
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/04/06/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%B7%A5%E5%85%B7%E9%93%BE%EF%BC%88numpy-pandas%EF%BC%89Day2/" title="数据科学工具链（numpy,pandas）Day2" >
+            <div class="recent-link-text">
+              数据科学工具链（numpy,pandas）Day2
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/04/06/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%B7%A5%E5%85%B7%E9%93%BE%EF%BC%88numpy-pandas%EF%BC%89/" title="数据科学工具链（numpy,pandas）" >
+            <div class="recent-link-text">
+              数据科学工具链（numpy,pandas）
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/02/27/2-3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/" title="2.3构造函数与析构函数" >
+            <div class="recent-link-text">
+              2.3构造函数与析构函数
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-ICS-PA0-开发环境配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        ICS-PA0(开发环境配置)
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-08-01T08:31:06.000Z" itemprop="datePublished">2025-08-01</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            12k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <p>在这门课中我们需要一个具有图形界面的Linux系统来运行NEMU这个模拟器<br>一般我们选择Ubuntu作为Linux系统。<br>之前我已经通过<strong>WSL2安装</strong>了Ubuntu系统，就直接使用，这里不再赘述。（除了WSL2安装外，还可以通过<strong>安装双系统</strong>和<strong>安装虚拟机</strong>来在Windows系统上安装Linux系统）<br>（通过wsl -l -v来看安装了哪些）<br><img src="/imgff/PA0-1.png"></p>
+<h2 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h2><p>在GNU&#x2F;Linux中，我们可以通过一个命令下载和安装软件（这在Windows中就可能很难做到）。这是由<strong>包管理器</strong>实现的，在不同的GNU&#x2F;Linux发行版中有不同的包管理器。在Ubuntu中，包管理器称为<strong>apt</strong>.</p>
+<h3 id="检查网络状态（确认联网正常）"><a href="#检查网络状态（确认联网正常）" class="headerlink" title="检查网络状态（确认联网正常）"></a>检查网络状态（确认联网正常）</h3><p>打开WSL2终端，输入以下命令测试网络：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping mirrors.tuna.tsinghua.edu.cn -c 4</span><br></pre></td></tr></table></figure>
+<p>如果你能看到 <code>64 bytes from...</code> 的输出，说明你的 WSL Ubuntu 可以联网，支持 IPv6（最好）。<br>若失败，可以试IPv4测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com -c 4</span><br></pre></td></tr></table></figure>
+<h3 id="确认当前系统版本"><a href="#确认当前系统版本" class="headerlink" title="确认当前系统版本"></a>确认当前系统版本</h3><p>输入以下命令查看当前系统版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+<p><img src="/imgff/PA0-2.png"><br>例如我的就是24.04（noble）版本</p>
+<h3 id="换源（修改APT源文件）"><a href="#换源（修改APT源文件）" class="headerlink" title="换源（修改APT源文件）"></a>换源（修改APT源文件）</h3><p>在<a target="_blank" rel="noopener" href="https://mirrors.bfsu.edu.cn/help/ubuntu/">这里</a>选择和你的Ubuntu版本相同的合适的源<br>**<a target="_blank" rel="noopener" href="http://mirrors.tuna.tsinghua.edu.cn/ubuntu/">清华源</a>**是完全兼容Ubuntu 24.04（noble）系统的，不会造成版本冲突,所以我选择使用清华源。<br>%% 只要使用与系统版本匹配的codename（如24.04用noble），就不会发生版本冲突【清华源提供了所有主线版本的完整安装包，包括：</p>
+<ul>
+<li>noble(24.04)</li>
+<li>jammy(22.04)</li>
+<li>focal(20.04)】%%<br><em>从 <strong>Ubuntu 23.10+（包括 24.04）</strong> 起，APT 默认采用 <strong>DEB822 格式</strong> 管理软件源，配置文件路径为：</em><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/etc/</span>apt<span class="regexp">/sources.list.d/</span>ubuntu.sources</span><br></pre></td></tr></table></figure>
+在WSL中运行以下代码，打开.source文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nano /etc/apt/sources.list.d/ubuntu.sources</span><br></pre></td></tr></table></figure>
+%% 这里需要输入密码 %%</li>
+</ul>
+<p>会看到：<br><img src="/imgff/PA0-3.png"><br><img src="/imgff/PA0-4.png"><br>其中最下面会有如下内容（示例）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Types: deb</span><br><span class="line">URIs: http://archive.ubuntu.com/ubuntu</span><br><span class="line">Suites: noble noble-updates noble-backports noble-security</span><br><span class="line">Components: main universe restricted multiverse</span><br><span class="line">Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg</span><br><span class="line"></span><br><span class="line">##</span><br><span class="line">##</span><br><span class="line"></span><br><span class="line">Types: deb</span><br><span class="line">URIs: http://security.ubuntu.com/ubuntu</span><br><span class="line">Suites: noble-security</span><br><span class="line">Components: main universe restricted multiverse</span><br><span class="line">Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg</span><br></pre></td></tr></table></figure>
+
+<p>把<code>URIs: http://archive.ubuntu.com/ubuntu</code>换成<code>URIs: http://mirrors.tuna.tsinghua.edu.cn/ubuntu</code><br>把<code>URIs: http://security.ubuntu.com/ubuntu</code>换成<code>URIs: http://mirrors.tuna.tsinghua.edu.cn/ubuntu</code></p>
+<p>如图：<br><img src="/imgff/PA0-5.png"><br>修改完成之后保存并退出编辑器</p>
+<ul>
+<li>Ctrl + O 保存</li>
+<li>Enter 确认文件名</li>
+<li>Ctrl + X 退出<br>之后运行以下代码进行更新索引：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt upgrade</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="图形化设置"><a href="#图形化设置" class="headerlink" title="图形化设置"></a>图形化设置</h3><p>正常情况下安装 WSL 时已经自动完成了图形界面的配置。可以在 WSL 中安装x11-apps来测试图形界面是否正常工作。<br>运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install x11-apps</span><br></pre></td></tr></table></figure>
+<p>安装完成后，运行xclock命令，如果弹出了一个时钟窗口，说明图形界面配置成功。如图：<br><img src="/imgff/PA0-6.png"><br>或者运行xeyes命令，如果看到一个小窗口显示两个跟随鼠标动的眼睛，也说明成功了<br><img src="/imgff/PA0-7.png"></p>
+<h3 id="安装-PA-工具"><a href="#安装-PA-工具" class="headerlink" title="安装 PA 工具"></a>安装 PA 工具</h3><p>通过以下命令安装PA需要的工具：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apt-get install build-essential    <span class="comment"># build-essential packages, include binary utilities, gcc, make, and so on</span></span><br><span class="line">apt-get install man                <span class="comment"># on-line reference manual</span></span><br><span class="line">apt-get install gcc-doc            <span class="comment"># on-line reference manual for gcc</span></span><br><span class="line">apt-get install gdb                <span class="comment"># GNU debugger</span></span><br><span class="line">apt-get install git                <span class="comment"># revision control system</span></span><br><span class="line">apt-get install libreadline-dev    <span class="comment"># a library used later</span></span><br><span class="line">apt-get install libsdl2-dev        <span class="comment"># a library used later</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装中文输入法"><a href="#安装中文输入法" class="headerlink" title="安装中文输入法"></a>安装中文输入法</h3><p>（这部分好久之前实操的了，当时是按照gpt的步骤一步一步进行的，下面的大概率就是当时的做法，没有再次实操报一丝）</p>
+<h4 id="安装Fctix框架和中文输入法引擎"><a href="#安装Fctix框架和中文输入法引擎" class="headerlink" title="安装Fctix框架和中文输入法引擎"></a>安装Fctix框架和中文输入法引擎</h4><p>运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install fcitx fcitx-googlepinyin fcitx-config-gtk</span><br><span class="line"><span class="comment"># `fcitx`：输入法框架</span></span><br><span class="line"><span class="comment"># `fcitx-googlepinyin`：Google 拼音引擎，轻量、准确</span></span><br><span class="line"><span class="comment"># `fcitx-config-gtk`：图形配置工具(方便添加/排序输入法)</span></span><br><span class="line"><span class="built_in">sudo</span> apt install fonts-wqy-zenhei fonts-wqy-microhei</span><br><span class="line"><span class="comment"># 扩展安装中文字体,否则部分程序中中文会显示方块</span></span><br></pre></td></tr></table></figure>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><p>执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;export GTK_IM_MODULE=fcitx&quot;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;export QT_IM_MODULE=fcitx&quot;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;export XMODIFIERS=@im=fcitx&quot;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="comment"># 确保所有图形应用（GTK/Qt/X11）能正确调用 `fcitx` 作为输入法。</span></span><br></pre></td></tr></table></figure>
+<h4 id="刷新环境变量"><a href="#刷新环境变量" class="headerlink" title="刷新环境变量"></a>刷新环境变量</h4><p>执行以下命令，让当前shell会话立即生效：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<h4 id="启动输入法（首次）"><a href="#启动输入法（首次）" class="headerlink" title="启动输入法（首次）"></a>启动输入法（首次）</h4><p>在终端输入：（首先要确保图形界面转发成功，比如我用的是 MobaXterm）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fcitx-autostart &amp;  <span class="comment"># 启动 Fcitx 框架</span></span><br><span class="line">fcitx-config-gtk3 &amp;  <span class="comment"># 打开图形配置界面</span></span><br></pre></td></tr></table></figure>
+<p>等待几秒钟，会弹出一个图形窗口（Fcitx 配置中心）。<br>启动 Fcitx 后，再打开配置工具，图形界面下你可以：<strong>添加「Google Pinyin」输入法 ; 设置「Ctrl+Space」作为切换热键 ; 修改输入法顺序</strong><br><img src="/imgff/PA0-8.png"></p>
+<h4 id="在配置界面中添加-Google-拼音输入法"><a href="#在配置界面中添加-Google-拼音输入法" class="headerlink" title="在配置界面中添加 Google 拼音输入法"></a>在配置界面中添加 Google 拼音输入法</h4><ul>
+<li>在窗口左下角点击 <code>+</code> 号，打开添加输入法界面</li>
+<li>搜索或从列表中找到 <code>Google Pinyin</code></li>
+<li>选中它，点击 <strong>确定</strong> 添加</li>
+<li>可选：调整输入法顺序，把 <code>Google Pinyin</code> 放在最前面<br>默认情况下，**<code>Ctrl+Space</code>** 是中英文切换快捷键。在 Fcitx 配置窗口的上方栏中，点击 <code>Global Config</code> → <code>Trigger Input Method</code>。更改为你想要的快捷键，例如 <code>Shift+Space</code></li>
+</ul>
+<p><img src="/imgff/PA0-9.png"></p>
+<h4 id="测试中文输入是否可用"><a href="#测试中文输入是否可用" class="headerlink" title="测试中文输入是否可用"></a>测试中文输入是否可用</h4><p>可以运行一个图形程序来测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gedit&amp;</span><br></pre></td></tr></table></figure>
+<p>(如果没有安装的话，按照提示安装即可)<br>在打开的窗口中应该会看到一个候选词框，输入拼音，可看到中文即为可以正常使用 。<br><img src="/imgff/PA0-10.png"></p>
+<h3 id="检查关键工具"><a href="#检查关键工具" class="headerlink" title="检查关键工具"></a>检查关键工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gcc --version</span><br><span class="line">gdb --version</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
+
+
+<p>🔑 ✅🧾</p>
+<h2 id="配置vim"><a href="#配置vim" class="headerlink" title="配置vim"></a>配置vim</h2><h3 id="安装：vim-编辑器之神"><a href="#安装：vim-编辑器之神" class="headerlink" title="安装：vim-编辑器之神"></a>安装：vim-编辑器之神</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install vim</span><br></pre></td></tr></table></figure>
+<h3 id="如何判断自己是否在WSL2的Ubuntu系统中安装了vim"><a href="#如何判断自己是否在WSL2的Ubuntu系统中安装了vim" class="headerlink" title="如何判断自己是否在WSL2的Ubuntu系统中安装了vim:"></a>如何判断自己是否在WSL2的Ubuntu系统中安装了vim:</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> vim</span><br></pre></td></tr></table></figure>
+<p>如果输出类似：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/vim</span><br></pre></td></tr></table></figure>
+<p>则表明系统中已经安装vim并且可以使用<br>如果什么都不输出，表示未安装</p>
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim --version</span><br></pre></td></tr></table></figure>
+<p>如果已经安装，会显示vim的版本信息如 <code>VIM - Vi IMproved 9.0</code> 等）<br>如果没有安装，会提示：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Command <span class="string">&#x27;vim&#x27;</span> <span class="keyword">not</span> found, but can be installed <span class="keyword">with</span>:</span><br><span class="line">sudo apt install vim</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取PA的源代码"><a href="#获取PA的源代码" class="headerlink" title="获取PA的源代码"></a>获取PA的源代码</h2><h3 id="在github上添加ssh-key"><a href="#在github上添加ssh-key" class="headerlink" title="在github上添加ssh key"></a>在github上添加ssh key</h3><p>在获取框架代码之前, 首先需要在github上添加一个ssh key</p>
+<h4 id="在WSL2-Ubuntu-中生成SSH密钥并copy公钥内容"><a href="#在WSL2-Ubuntu-中生成SSH密钥并copy公钥内容" class="headerlink" title="在WSL2 Ubuntu 中生成SSH密钥并copy公钥内容"></a>在WSL2 Ubuntu 中生成SSH密钥并copy公钥内容</h4><p>(我之前没有生成过SSH密钥，所以这一步必须要进行，如果之前生成过则可以跳过)<br>运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
+<p>然后会提示你保存路径（默认即可），然后按3次回车即可（可以不设置密码）。</p>
+<p>公钥默认保存在：<code>~/.ssh/id_ed25519.pub</code><br>运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.ssh/id_ed25519.pub</span><br></pre></td></tr></table></figure>
+<p>然后复制整行内容，例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMDk...... your_email<span class="keyword">@example</span>.com</span><br></pre></td></tr></table></figure>
+<h4 id="登录-GitHub-添加-SSH-key"><a href="#登录-GitHub-添加-SSH-key" class="headerlink" title="登录 GitHub 添加 SSH key"></a>登录 GitHub 添加 SSH key</h4><p>登录GitHub，点击右上角头像 → <strong>Settings</strong>，进入左侧菜单：<strong>SSH and GPG keys</strong>，点击 <strong>New SSH key</strong></p>
+<ul>
+<li>Title: 任意填写（如：<code>WSL2 Ubuntu</code>）</li>
+<li>Key: 粘贴你刚才复制的公钥内容<br>点击 <strong>Add SSH key</strong></li>
+</ul>
+<h4 id="测试是否配置成功"><a href="#测试是否配置成功" class="headerlink" title="测试是否配置成功"></a>测试是否配置成功</h4><p>在WSL2中运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>首次连接会提示：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="symbol">&#x27;github</span>.<span class="title function_ invoke__">com</span> (IP)<span class="string">&#x27; can&#x27;</span>t be established.</span><br><span class="line">Are you sure you want to <span class="keyword">continue</span> <span class="title function_ invoke__">connecting</span> (yes/no)?</span><br></pre></td></tr></table></figure>
+<p>输入：<code>yes</code><br>成功输出应为：</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi your_username! You<span class="comment">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
+<p>🎉 表示 SSH 配置完成！</p>
+<h4 id="判断自己是否已经在-WSL2-的-Ubuntu-中生成了-SSH-密钥"><a href="#判断自己是否已经在-WSL2-的-Ubuntu-中生成了-SSH-密钥" class="headerlink" title="判断自己是否已经在 WSL2 的 Ubuntu 中生成了 SSH 密钥"></a>判断自己是否已经在 WSL2 的 Ubuntu 中生成了 SSH 密钥</h4><p>在WSL2终端运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l ~/.ssh/</span><br></pre></td></tr></table></figure>
+<p>常见输出（表示已生成密钥）：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-rw------- 1 ffffff ffffff  464 Jul 23  id_ed25519</span></span><br><span class="line"><span class="deletion">-rw-r--r-- 1 ffffff ffffff  100 Jul 23  id_ed25519.pub</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>id_ed25519</code></td>
+<td>私钥（不要泄露）</td>
+</tr>
+<tr>
+<td><code>id_ed25519.pub</code></td>
+<td>公钥（可添加到 GitHub）</td>
+</tr>
+</tbody></table>
+<h3 id="获取源代码"><a href="#获取源代码" class="headerlink" title="获取源代码"></a>获取源代码</h3><p>运行以下命令来获得实验源代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~                                      <span class="comment"># 回到主目录</span></span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> -b 2024 git@github.com:NJU-ProjectN/ics-pa.git ics2024</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置Git环境</span></span><br><span class="line">git config --global user.name <span class="string">&quot;231220000-Zhang San&quot;</span> <span class="comment"># 可以有中文</span></span><br><span class="line">git config --global user.email <span class="string">&quot;zhangsan@foo.com&quot;</span></span><br><span class="line">git config --global core.editor vim</span><br><span class="line">git config --global color.ui <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化子模块</span></span><br><span class="line"><span class="built_in">cd</span> ics2024</span><br><span class="line">git branch -m master  <span class="comment"># 将当前分支改名为 `master`（PA 的默认开发分支）</span></span><br><span class="line">bash init.sh nemu</span><br><span class="line">bash init.sh abstract-machine</span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc                         <span class="comment"># 使环境变量生效</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$NEMU_HOME</span>                          <span class="comment"># 检查环境变量</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$AM_HOME</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$NEMU_HOME</span>                          </span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$AM_HOME</span></span><br></pre></td></tr></table></figure>
+<p><img src="/imgff/PA0-11.png"></p>
+<ul>
+<li><code>~</code> 是 Linux&#x2F;Unix 系统中当前用户的主目录，比如 <code>/home/yourname</code> 或 <code>/Users/yourname</code>。**&#x3D;&#x3D;主目录是最安全、最推荐放置个人项目的地方。&#x3D;&#x3D;** 不应该在系统级目录（如 <code>/usr</code>, <code>/bin</code>, <code>/etc</code>, <code>/root</code>）下开发实验项目，因为可能会不小心修改或破坏系统文件。<strong>所有实验开发应在用户主目录下进行，避免误伤系统。</strong></li>
+<li>关于<code>git clone -b 2024 git@github.com:NJU-ProjectN/ics-pa.git ics2024</code> 的解释：<ul>
+<li><strong><code>git clone</code></strong>: 这是 Git 命令中用来克隆（下载）远程仓库到本地的操作。</li>
+<li><strong><code>b 2024</code></strong>: 这是一个选项，表示在克隆仓库时，<strong>指定克隆特定的分支</strong>。<code>-b</code> 后面跟的是分支名，这里指定了 <code>2024</code> 分支。如果该分支存在，Git 会克隆这个分支的内容，而不是默认的 <code>main</code> 或 <code>master</code> 分支。</li>
+<li><strong><code>git@github.com:NJU-ProjectN/ics-pa.git</code></strong>: 这是远程 Git 仓库的 SSH 地址。通过 SSH 协议访问该仓库，而不是使用 HTTPS。此地址中的 <code>git@github.com</code> 指明通过 GitHub 的 SSH 服务进行访问，后面的 <code>NJU-ProjectN/ics-pa.git</code> 是仓库的用户名和仓库名。</li>
+<li><strong><code>ics2024</code></strong>: 这是<strong>克隆下来的仓库在本地保存的目录名</strong>。在执行该命令后，仓库的文件将被下载到本地的 <code>ics2024</code> 文件夹中。</li>
+</ul>
+</li>
+<li><code>git branch -m master</code> ：&#x3D;&#x3D;将当前分支改名为 <code>master</code>（PA 的默认开发分支）&#x3D;&#x3D;</li>
+<li>另：删除在 Windows 中使用 Git Bash 克隆的仓库，只需要删除对应的文件夹即可，不需要任何额外的 Git 操作。</li>
+</ul>
+<h3 id="Git-使用"><a href="#Git-使用" class="headerlink" title="Git 使用"></a>Git 使用</h3><h4 id="查看当前有哪些分支"><a href="#查看当前有哪些分支" class="headerlink" title="查看当前有哪些分支"></a>查看当前有哪些分支</h4><p>在ics2024文件夹下执行以下命令列出所有分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
+<p>会看到现在只有一个分支叫做“master”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* master</span><br></pre></td></tr></table></figure>
+<h4 id="创建并转到新分支"><a href="#创建并转到新分支" class="headerlink" title="创建并转到新分支"></a>创建并转到新分支</h4><p>要创建并转到新分支newbranch，使用命令：<code>git checkout -b newbranch</code><br>（如果转到已有分支xxbranch，使用命令：<code>git checkout xxbranch</code>）<br>我们首先&#x3D;&#x3D;创建一个pa0分支(在ics2024下进行)&#x3D;&#x3D;：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b pa0</span><br></pre></td></tr></table></figure>
+<p>再次运行<code>git branch</code>命令列出所有分支会看到：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">master</span><br><span class="line">* pa0</span><br></pre></td></tr></table></figure>
+<p>在现在这种情况下，项目中所有文件的修改都将记录在pa0分支中。</p>
+<h4 id="修改项目文件"><a href="#修改项目文件" class="headerlink" title="修改项目文件"></a>修改项目文件</h4><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开文件: ics2024/Makefile</span></span><br><span class="line"><span class="comment"># 修改以下变量为你的真实信息：</span></span><br><span class="line"></span><br><span class="line">STUID = 231221234  <span class="comment"># 你的学号</span></span><br><span class="line">STUNAME = 李四     <span class="comment"># 你的中文姓名</span></span><br></pre></td></tr></table></figure>
+<h4 id="查看修改状态并提交修改"><a href="#查看修改状态并提交修改" class="headerlink" title="查看修改状态并提交修改"></a>查看修改状态并提交修改</h4><ul>
+<li><p><strong>查看修改状态：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p>输出类似：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">On</span> <span class="string">branch</span> <span class="string">pa0</span></span><br><span class="line"><span class="attr">Changes not staged for commit:</span></span><br><span class="line">  <span class="attr">modified:</span>   <span class="string">Makefile</span></span><br></pre></td></tr></table></figure>
+<p>说明你修改了文件，但还没 <code>add</code> 到 Git 暂存区。</p>
+</li>
+<li><p><strong>查看修改内容的具体差异：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+<p>输出会像这样：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-STUID = 231220000</span></span><br><span class="line"><span class="deletion">-STUNAME = 张三</span></span><br><span class="line"><span class="addition">+STUID = 231221234</span></span><br><span class="line"><span class="addition">+STUNAME = 李四</span></span><br></pre></td></tr></table></figure>
+<p>表示修改了 <code>Makefile</code> 中这两行。</p>
+</li>
+<li><p><strong>添加并提交修改</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .  <span class="comment"># 把当前目录下所有修改添加到暂存区。</span></span><br><span class="line">git commit  <span class="comment"># 这会打开我们之前配置的编辑器（如vim或者nano或者vscode）,让我们填写提交说明。</span></span><br></pre></td></tr></table></figure>
+<p>第一行输入：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">modified</span> my <span class="literal">info</span></span><br></pre></td></tr></table></figure>
+<p>然后&#x3D;&#x3D;保存退出，在vim中是：&#x3D;&#x3D;<br>&#x3D;&#x3D;Esc → 输入  <code>:wq</code>  →  回车&#x3D;&#x3D;</p>
+</li>
+</ul>
+<p>&#x3D;&#x3D;保存退出，在nano中是：&#x3D;&#x3D;<br>&#x3D;&#x3D;Ctrl + O(保存) → Ctrl + X (退出编辑器)&#x3D;&#x3D;</p>
+<ul>
+<li>查看提交历史<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+会看到如下格式的提交历史：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">commit 3f82bcd... </span><br><span class="line">Author: 231221234-李四 &lt;email@example.com&gt;</span><br><span class="line">Date:   ...</span><br><span class="line"></span><br><span class="line">    modified my info</span><br></pre></td></tr></table></figure>
+说明你已经成功提交一次记录。</li>
+</ul>
+<h4 id="小结与术语对照"><a href="#小结与术语对照" class="headerlink" title="小结与术语对照"></a>小结与术语对照</h4><table>
+<thead>
+<tr>
+<th>Git 命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git branch</code></td>
+<td>查看分支</td>
+</tr>
+<tr>
+<td><code>git checkout -b xxx</code></td>
+<td>创建并切换到新分支</td>
+</tr>
+<tr>
+<td><code>git status</code></td>
+<td>查看工作区修改</td>
+</tr>
+<tr>
+<td><code>git diff</code></td>
+<td>查看文件内容改动</td>
+</tr>
+<tr>
+<td><code>git add .</code></td>
+<td>把修改加入暂存区</td>
+</tr>
+<tr>
+<td><code>git commit</code></td>
+<td>提交更改，记录日志</td>
+</tr>
+<tr>
+<td><code>git log</code></td>
+<td>查看提交历史</td>
+</tr>
+<tr>
+<td><code>git checkout master</code></td>
+<td>回到主分支</td>
+</tr>
+<tr>
+<td><code>git checkout xxx</code></td>
+<td>切换分支</td>
+</tr>
+</tbody></table>
+<h4 id="分支工作流总结（非常重要！）"><a href="#分支工作流总结（非常重要！）" class="headerlink" title="分支工作流总结（非常重要！）"></a>分支工作流总结（非常重要！）</h4><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开始一个新的 PA</td>
+<td><code>git checkout -b pa1</code>（或 pa2, pa3 等）</td>
+</tr>
+<tr>
+<td>在新分支中编码和调试</td>
+<td>你可以随意提交、修改、实验</td>
+</tr>
+<tr>
+<td>完成 PA 后</td>
+<td>使用 <code>git checkout master</code> 切换回主分支</td>
+</tr>
+<tr>
+<td>把分支合并到 master</td>
+<td>使用 <code>git merge pa1</code>（等你学到合并章节）</td>
+</tr>
+</tbody></table>
+<h3 id="编译和运行-NEMU"><a href="#编译和运行-NEMU" class="headerlink" title="编译和运行 NEMU"></a>编译和运行 NEMU</h3><h4 id="进入-NEMU-目录-第一次编译前运行（出错）"><a href="#进入-NEMU-目录-第一次编译前运行（出错）" class="headerlink" title="进入 NEMU 目录&amp;第一次编译前运行（出错）"></a>进入 NEMU 目录&amp;第一次编译前运行（出错）</h4><p>执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$NEMU_HOME</span></span><br></pre></td></tr></table></figure>
+<p>$NEMU_HOME是环境变量，指向ics2024&#x2F;nemu目录，之前我们运行<code>init.sh nemu</code>后已自动配置。也可以手动进入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/ics2024/nemu</span><br></pre></td></tr></table></figure>
+<p>然后运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
+<p>大概率会遇到错误，如图：<br><img src="/imgff/PA0-12.png"><br>原因是缺少依赖项，修复方法(我暂时增加了这些依赖，因为增加这些依赖后就能正常运行了)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install libncurses-dev build-essential</span><br><span class="line"><span class="built_in">sudo</span> apt install bison</span><br><span class="line"><span class="built_in">sudo</span> apt install flex</span><br></pre></td></tr></table></figure>
+<ul>
+<li>我们可以在任何目录下运行<code>sudo apt update</code>和<code>sudo apt install  xxx</code>。目录位置不会影响安装效果。因为apt 是一个系统级包管理器，用于管理整个操作系统的工具包和依赖。和我们当前在哪个工作目录（<del>、</del>&#x2F;ics2024&#x2F;nemu、&#x2F;tmp等）没有关系，这个命令安装的包会被放在 <code>/usr/bin/bison</code>等系统路径中，全局可用。</li>
+<li>查找某个安装包可以用以下命令来进行验证(以bison包为例)：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">which</span> bison</span><br><span class="line">bison --vision</span><br></pre></td></tr></table></figure>
+ 如果能看到路径和版本号就说明安装成功了，例如：<br>  <img src="/imgff/PA0-13.png"></li>
+</ul>
+<h4 id="第一次编译前运行-make-menuconfig（成功）"><a href="#第一次编译前运行-make-menuconfig（成功）" class="headerlink" title="第一次编译前运行 make menuconfig（成功）"></a>第一次编译前运行 <code>make menuconfig</code>（成功）</h4><p>再次运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
+<p>%%这个命令会调用 <code>menuconfig</code>，这是一个配置 NEMU 的工具（借鉴自 Linux 内核的配置系统）。%%<br>这个命令会弹出一个基于终端的 图形化菜单，如图：<br><img src="/imgff/PA0-14.png"><br>不需要修改内容，直接选择：<code>Exit</code>，然后选择<code>Yes</code>保存配置（配置结果保存在<code>.config</code>文件中，将影响后续<code>make</code>编译行为）<br><img src="/imgff/PA0-15.png"><br>关闭之后可以看到如图运行结果：<br><img src="/imgff/PA0-16.png"></p>
+<h4 id="编译-运行-NEMU"><a href="#编译-运行-NEMU" class="headerlink" title="编译&amp;运行 NEMU"></a>编译&amp;运行 NEMU</h4><p>编译nemu：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+<p>这一步会读取你配置好的<code>.config</code>,执行多层Makefile(终端会有一长串)，编译整个NEMU工程。<br>如果想要重新编译或者修改配置后进行编译，需要先清理旧的编译结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make clean</span><br></pre></td></tr></table></figure>
+<p>运行nemu：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make run</span><br></pre></td></tr></table></figure>
+<p><img src="/imgff/PA0-17.png">其中有一行：<code>riscv32-nemu-interpreter: src/monitor/monitor.c:36: welcome: Assertion `0&#39; failed.</code><br>这是故意加的断言，暂时不需要修复</p>
+<p>另外可以运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make gdb</span><br></pre></td></tr></table></figure>
+<p>启动调试。<br>另：**&#x3D;&#x3D;输入q或者quit即可退出调试&#x3D;&#x3D;**</p>
+<h3 id="发展追踪-本地提交"><a href="#发展追踪-本地提交" class="headerlink" title="发展追踪&amp;本地提交"></a>发展追踪&amp;本地提交</h3><p><strong>&#x3D;&#x3D;完整流程如下：&#x3D;&#x3D;</strong></p>
+<h4 id="进入仓库-创建分支（每个PA开始时创建即可）"><a href="#进入仓库-创建分支（每个PA开始时创建即可）" class="headerlink" title="进入仓库&amp;创建分支（每个PA开始时创建即可）"></a>进入仓库&amp;创建分支（每个PA开始时创建即可）</h4><p>PA0:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/ics2024</span><br><span class="line">git checkout -b pa0 <span class="comment"># 如果还没有创建pa0分支</span></span><br></pre></td></tr></table></figure>
+<p>后面的PA：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git commit --allow-empty -am <span class="string">&quot;before starting pa1&quot;</span></span><br><span class="line">git checkout master</span><br><span class="line">git merge pa0</span><br><span class="line">git checkout -b pa1</span><br></pre></td></tr></table></figure>
+<p>然后进行开发即可。</p>
+<blockquote>
+<p>在 <code>pa0</code>、<code>pa1</code> 等专属实验分支中开发和提交。</p>
+</blockquote>
+<h4 id="运行-本地提交（开发过程中不断循环进行）"><a href="#运行-本地提交（开发过程中不断循环进行）" class="headerlink" title="运行&amp;本地提交（开发过程中不断循环进行）"></a>运行&amp;本地提交（开发过程中不断循环进行）</h4><p>编码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim xxx.c</span><br></pre></td></tr></table></figure>
+<p>编译：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure>
+<p>运行:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make run</span><br></pre></td></tr></table></figure>
+<p>每完成一个小模块（如译码、执行、调试通过等）<strong>如果一切正常，就做一次手动提交！</strong>记录当下的状态！（虽然有自动追踪进行记录，但是手动commit更加清晰）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit --allow-empty -m  <span class="string">&quot;阶段或总结性说明&quot;</span></span><br></pre></td></tr></table></figure>
+<p>注：</p>
+<ul>
+<li>每次commit 后面都要加上“ – allow-empty”因为通常更改已经由开发跟踪系统提交，如果没有这个选项，将拒绝没有进行更改的提交。</li>
+<li>说明可以完善一点：<br>【PAx】&lt;简要说明&gt;  - &lt;修改了哪些模块&#x2F;文件&gt;  - &lt;解决了什么问题&#x2F;添加了什么功能&gt;  - &lt;测试情况：xxx通过&#x2F;xxx未通过&gt;<br>如果需要写多行说明，最好在编辑器中进行(在终端不写-m)：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --allow-empty</span><br></pre></td></tr></table></figure>
+ 然后保存并退出后提交就完成了。</li>
+</ul>
+<h4 id="查看完整开发日志"><a href="#查看完整开发日志" class="headerlink" title="查看完整开发日志"></a>查看完整开发日志</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --oneine</span><br></pre></td></tr></table></figure>
+<p>示例输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fbc88d5 【PA0】完成 load/store 指令实现，版本稳定 ✅</span><br><span class="line">6d332ea 【PA0】修复 MMU 地址转换 bug，load/store 通过 riscv-tests</span><br><span class="line">38a81b0 【PA0】实现所有 load/store 指令（lb/lh/lbu/lhu/sb/sh/sw）</span><br><span class="line">e4f23da 【PA0】初步添加 lw/sw 指令执行结构（未测试）</span><br></pre></td></tr></table></figure>
+
+<p>如果想要过滤，只看我自己手动提交的记录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> --author=<span class="string">&quot;王若璠&quot;</span> <span class="comment"># &quot;&quot;中填写你的名字</span></span><br></pre></td></tr></table></figure>
+<h3 id="撰写报告"><a href="#撰写报告" class="headerlink" title="撰写报告"></a>撰写报告</h3><h4 id="必须描述的内容"><a href="#必须描述的内容" class="headerlink" title="必须描述的内容"></a>必须描述的内容</h4><ul>
+<li>**&#x3D;&#x3D;实验进度&#x3D;&#x3D;**。简单明描述即可，例如“我完成了所有内容”，“我只完成了xxx”</li>
+<li><strong>&#x3D;&#x3D;必答题&#x3D;&#x3D;</strong></li>
+</ul>
+<h4 id="鼓励描述的内容"><a href="#鼓励描述的内容" class="headerlink" title="鼓励描述的内容"></a>鼓励描述的内容</h4><ul>
+<li>在实验中遇到的问题和对这些问题的思考</li>
+<li>对讲义中<span style="color:blue"><b>蓝框思考题</b></span><span style="color:blue"></span>的看法</li>
+<li>或者其他想法，如实验心得，对提供帮助的同学的感谢。<br>&#x3D;&#x3D;认真描述实验心得和想法的报告&#x3D;&#x3D;将会获得分数的奖励; 蓝框题为选做, 完成了也不会得到分数的奖励, 但它们是经过精心准备的, 可以加深你对某些知识的理解和认识.<br>因此当你发现编写实验报告的时间所剩无几时, 你&#x3D;&#x3D;应该选择描述实验心得和想法&#x3D;&#x3D;. 如果你实在没有想法, 你可以提交一份不包含任何想法的报告, 我们不会强求.但请不要</li>
+<li>大量粘贴讲义内容</li>
+<li>大量粘贴代码和贴图, 却没有相应的详细解释(让我们明显看出来是凑字数的)<br>来让你的报告看起来十分丰富, 编写和阅读这样的报告毫无任何意义, 你也不会因此获得更多的分数, 同时还可能带来扣分的可能.</li>
+</ul>
+<h3 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h3><p>完成各个实验之后，需要把项目提交到网站（具体方式因课程老师而定）</p>
+<p>要确保最终的项目目录结构是这样的：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ics2024/</span><br><span class="line">├── <span class="number">231220000.</span>pdf     ✅ ← 实验报告（PDF 格式）</span><br><span class="line">├── <span class="keyword">abstract</span>-machine/ ✅ ← 框架子模块之一</span><br><span class="line">├── fceux-am/         ✅ ← 另一个子模块（部分 PA 会用到）</span><br><span class="line">├── <span class="keyword">init</span>.sh           ✅ ← 初始化脚本</span><br><span class="line">├── Makefile          ✅ ← 工程入口文件</span><br><span class="line">├── nemu/             ✅ ← NEMU 框架</span><br><span class="line">└── README.md</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注：<br>✅ 报告必须是 PDF 格式，并命名为 <strong>学号.pdf</strong>（比如：<code>231220000.pdf</code>）<br>✅ 报告必须放在 <code>ics2024</code> 根目录中，<strong>不要放到子目录里</strong><br>❌ 不要上传 <code>.docx</code>、<code>.pages</code>、<code>.md</code> 或截图形式的报告<br>✅ 保留 <code>.git</code> 文件夹（不能清除开发历史）</p>
+</blockquote>
+<p><strong>&#x3D;&#x3D;实验提交只需要运行<code>make submit</code>命令。&#x3D;&#x3D;</strong>(暂定，不清楚具体方法)</p>
+<h2 id="SSH远程连接（VS-Code）"><a href="#SSH远程连接（VS-Code）" class="headerlink" title="SSH远程连接（VS Code）"></a>SSH远程连接（VS Code）</h2><h3 id="在Ubuntu中安装SSH"><a href="#在Ubuntu中安装SSH" class="headerlink" title="在Ubuntu中安装SSH"></a>在Ubuntu中安装SSH</h3><p>安装SSH:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install openssh-server</span><br></pre></td></tr></table></figure>
+<p>启动SSH服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> service ssh start</span><br></pre></td></tr></table></figure>
+<p>用以下命令启动SSH服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> service ssh status</span><br></pre></td></tr></table></figure>
+<p>如果一切正常的话会看到<span style="color:green; font-weight:bold">active(running)</span>的提示。如下图：<br><img src="/imgff/PA0-18.png"></p>
+<blockquote>
+<p>在Windows系统上通过SSH远程连接WSL2的Ubuntu系统&#x3D;&#x3D;<strong>必须首先在Ubuntu中启动SSH服务</strong>&#x3D;&#x3D;</p>
+</blockquote>
+<blockquote>
+<p><code> Loaded: loaded (/usr/lib/systemd/system/ssh.service; disabled; preset: enabled)</code>说明：<br>✅ 你的系统中安装了 SSH 服务（<code>openssh-server</code>），并加载成功；<br>❗ 但是它 <strong>不会自动启动</strong>(disabled)，你必须手动运行 <code>sudo service ssh start</code> 或 <code>sudo systemctl start ssh</code> 来启动它；</p>
+</blockquote>
+<p>关闭SSH服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> service ssh stop</span><br></pre></td></tr></table></figure>
+<p>电脑关机 &#x2F; WSL 关闭时，SSH 服务也会关闭<br><strong>SSH 服务会随 WSL 实例关闭而自动终止</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>是否会关闭 SSH 服务</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关闭 Windows 电脑</td>
+<td>✅ 会（WSL 随系统关闭）</td>
+</tr>
+<tr>
+<td>手动关闭 WSL</td>
+<td>✅ 会（例如 <code>wsl --shutdown</code>）</td>
+</tr>
+<tr>
+<td>重启 WSL</td>
+<td>✅ 会中断并重启 SSH 服务（需要重新启动它，除非设置了自启）</td>
+</tr>
+<tr>
+<td>关闭 VS Code、终端窗口</td>
+<td>⚠️ 仅关闭窗口不会关闭 SSH 服务，除非 WSL 整个关闭</td>
+</tr>
+</tbody></table>
+<h3 id="当前WSL2网络状态分析-端口转发"><a href="#当前WSL2网络状态分析-端口转发" class="headerlink" title="当前WSL2网络状态分析&amp;端口转发"></a>当前WSL2网络状态分析&amp;端口转发</h3><h4 id="查看Linux系统的IP地址"><a href="#查看Linux系统的IP地址" class="headerlink" title="查看Linux系统的IP地址"></a>查看Linux系统的IP地址</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+<p>输出如下：<br><img src="/imgff/PA0-19.png"></p>
+<p>在这里我们选择eth0后面的IP地址（有的时候可能是eth2等）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inet 192.168.21.137</span><br></pre></td></tr></table></figure>
+<p>这个IP是WSL2中的Linux自己的IP地址，而不是Windows主机的地址。<br>问题是：&#x3D;&#x3D;我们无法直接从Windows（的VS Code）连接到这个IP地址&#x3D;&#x3D;，这是因为：</p>
+<ul>
+<li>WSL2 本质上是一个<strong>虚拟机</strong>，运行在 Windows 上</li>
+<li>WSL2使用 <strong>Hyper-V 的虚拟网络适配器（NAT 模式）</strong></li>
+<li>所以 WSL2 拥有自己的“内部网络 IP”（如你看到的 <code>192.168.21.137</code>）</li>
+<li>这个 IP 是 <strong>在 WSL2 虚拟网卡内部可见的</strong>，但从 Windows 主机无法访问</li>
+<li>我的宿主机（WIndows系统）和WSL2虽然在同一台电脑上，但是二者彼此IP不互通</li>
+<li>所以不能直接在VS Code中使用ssh <a href="mailto:&#102;&#102;&#x66;&#102;&#102;&#102;&#x40;&#49;&#57;&#50;&#x2e;&#49;&#x36;&#56;&#46;&#50;&#49;&#46;&#x31;&#x33;&#55;">&#102;&#102;&#x66;&#102;&#102;&#102;&#x40;&#49;&#57;&#50;&#x2e;&#49;&#x36;&#56;&#46;&#50;&#49;&#46;&#x31;&#x33;&#55;</a></li>
+</ul>
+<p> 📦 类比理解</p>
+<blockquote>
+<p>WSL2 就像你电脑里的一个“局域网里的小电脑”，你看到它的 IP 是 <code>192.168.xx.xx</code>，但你（Windows）自己 <strong>不是它那个小局域网里的成员</strong>，所以无法直接访问。</p>
+</blockquote>
+<p>❗❗❗**&#x3D;&#x3D;解决方法：端口转发&#x3D;&#x3D;**❗❗❗</p>
+<h4 id="端口转发（待定）"><a href="#端口转发（待定）" class="headerlink" title="端口转发（待定）"></a>端口转发（待定）</h4><p>首先确保WSL2中SSH服务已经启动：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> service ssh start</span><br><span class="line"><span class="built_in">sudo</span> service ssh status</span><br></pre></td></tr></table></figure>
+<p>应该看到 <code>active (running)</code>。<br>然后以管理员身份运行PowerShell,执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netsh interface portproxy add v4tov4 listenport=2222 listenaddress=127.0.0.1 connectport=22 connectaddress=127.0.0.1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>⏩ 把 Windows 本机的 <code>127.0.0.1:2222</code> → 转发给 WSL2 内的 <code>127.0.0.1:22</code></p>
+</blockquote>
+<p>然后再Windows中的<code>~/.ssh/config</code>（完整路径是<code>C:\Users\ffffff\.ssh\config</code>）文件中<strong>添加</strong>如下配置：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host my-wsl   <span class="comment"># my-wsl可以是其他名称</span></span><br><span class="line">    HostName 127.0.0.1</span><br><span class="line">    Port 2222</span><br><span class="line">    User ffffff      <span class="comment"># ← 这里用你的 WSL 中的用户名   </span></span><br></pre></td></tr></table></figure>
+
+<p>然后测试是否连接成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh ffffff@127.0.0.1 -p 2222</span><br></pre></td></tr></table></figure>
+<p>如果能成功进入Ubuntu的Shell，就说明连接成功，也就能在VS Code中连接了。</p>
+<h4 id="在VS-Code中配置SSH"><a href="#在VS-Code中配置SSH" class="headerlink" title="在VS Code中配置SSH"></a>在VS Code中配置SSH</h4><p>首先安装并启用Remote-SSH插件<br>然后<code>Ctrl+Shift+P</code> →<code>Remote-SSH: Connect to Host...</code><br>选择<code>my-wsl</code><br>在上方框中输入密码后Enter<br>看到左下角出现<code>SSH:my-wsl</code>即为连接成功</p>
+<h4 id="重启-WSL-后需要做的事情"><a href="#重启-WSL-后需要做的事情" class="headerlink" title="重启 WSL 后需要做的事情"></a>重启 WSL 后需要做的事情</h4><blockquote>
+<ol>
+<li>打开WSL</li>
+<li>启动SSH服务<code>sudo service ssh start</code>并检查<code>sudo service ssh status</code></li>
+<li>Windows连接&#x2F;VS Code连接</li>
+</ol>
+</blockquote>
+<h3 id="转发图形界面"><a href="#转发图形界面" class="headerlink" title="转发图形界面"></a>转发图形界面</h3><p>PA 的后半部分需要运行图形化界面程序，因此我们需要将图形界面转发到本地。<br>下载安装打开&#x3D;&#x3D;<strong>MobaXterm</strong>&#x3D;&#x3D;后，输入 IP 地址和用户名连接。<br>为了能转发图像界面，需要在 Advanced SSH Settings 中勾选X11-Forwarding选项。<br>在连接成功后，我们可以在 MobaXterm 中运行<br><code>xclock</code>命令来测试图形界面是否正常工作。<br><img src="/imgff/PA0-20.png"></p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left  disabled "
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/07/23/github%E4%BB%93%E5%BA%93%E5%8D%8F%E4%BD%9C%E6%B5%81%E7%A8%8B/"
+      title="github仓库协作流程"
+     >
+
+    <p class="title-text">
+      
+        github仓库协作流程
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+  
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <div id="comment-card" class="comment-card">
+    <div class="main-title-bar">
+      <div class="main-title-dot"></div>
+      <div class="main-title">Comments </div>
+    </div>
+    <div id="vcomments"></div>
+  </div>
+  <script>
+      new Valine({"enable":true,"appId":"RxUcUDCs4PkrAVfsPEoMi8VU-gzGzoHsz","appKey":"P8P94qqk5PEJXgLeEEh2qJTr","placeholder":"大家可以在上面留下你的github网址，一起交流学习呀～Everyone can leave your Github URL at the above website, and let's communicate and learn together~","pageSize":10,"highlight":true,"serverURLs":null,"el":"#vcomments"});
+  </script>
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 Ruofan Wang<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
