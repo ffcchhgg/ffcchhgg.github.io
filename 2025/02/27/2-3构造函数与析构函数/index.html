@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>2.3构造函数与析构函数 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="2.3构造函数与析构函数 构造函数与析构函数：通俗版解释 1. 构造函数：对象的“出生证明” 作用：在对象创建时，自动初始化数据成员。 特点： 名字与类名相同（如Dog()）。 无返回值（连void都没有）。 可以重载（多个构造函数，按参数不同区分）。 创建对象时，构造函数会被自动调用！！    例子：  1234567891011class Dog &#123;private:    strin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.3构造函数与析构函数">
+<meta property="og:url" content="https://www.ffcchhgg.cn/2025/02/27/2-3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="2.3构造函数与析构函数 构造函数与析构函数：通俗版解释 1. 构造函数：对象的“出生证明” 作用：在对象创建时，自动初始化数据成员。 特点： 名字与类名相同（如Dog()）。 无返回值（连void都没有）。 可以重载（多个构造函数，按参数不同区分）。 创建对象时，构造函数会被自动调用！！    例子：  1234567891011class Dog &#123;private:    strin">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/7.png">
+<meta property="article:published_time" content="2025-02-27T11:48:31.000Z">
+<meta property="article:modified_time" content="2025-02-27T12:24:45.862Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="高程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.ffcchhgg.cn/imgff/7.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/images/banner.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Hexo </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/images/avatar.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Ruofan Wang </div>
+      <div class="dot"></div>
+      <div class="subtitle">Betelgeuse </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/ffcchhgg" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/%E9%AB%98%E7%A8%8B/">
+                高程
+                <div class="category-count">3</div>
+            </a>
+        <div class="children"><div class="category-box">
+            <a class="category-link" href="/categories/%E9%AB%98%E7%A8%8B/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">
+                第二章
+                <div class="category-count">3</div>
+            </a>
+        </div></div>
+            <a class="category-link" href="/categories/Daily/">
+                Daily
+                <div class="category-count">1</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Daily/" rel="tag">Daily</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%AB%98%E7%A8%8B/" rel="tag">高程</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2025/10/29/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/README/" title="README" >
+            <div class="recent-link-text">
+              README
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/08/07/ICS-PA1-%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA/" title="ICS-PA1-最简单的计算机" >
+            <div class="recent-link-text">
+              ICS-PA1-最简单的计算机
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/08/01/ICS-PA0-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="ICS-PA0(开发环境配置)" >
+            <div class="recent-link-text">
+              ICS-PA0(开发环境配置)
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/07/23/github%E4%BB%93%E5%BA%93%E5%8D%8F%E4%BD%9C%E6%B5%81%E7%A8%8B/" title="github仓库协作流程" >
+            <div class="recent-link-text">
+              github仓库协作流程
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/04/06/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%B7%A5%E5%85%B7%E9%93%BE%EF%BC%88numpy-pandas%EF%BC%89Day2/" title="数据科学工具链（numpy,pandas）Day2" >
+            <div class="recent-link-text">
+              数据科学工具链（numpy,pandas）Day2
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-2-3构造函数与析构函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        2.3构造函数与析构函数
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-02-27T11:48:31.000Z" itemprop="datePublished">2025-02-27</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E9%AB%98%E7%A8%8B/">高程</a>><a class="meta-cate-link" href="/categories/%E9%AB%98%E7%A8%8B/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">第二章</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.8k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AB%98%E7%A8%8B/" rel="tag">高程</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h1 id="2-3构造函数与析构函数"><a href="#2-3构造函数与析构函数" class="headerlink" title="2.3构造函数与析构函数"></a>2.3构造函数与析构函数</h1><hr>
+<h2 id="构造函数与析构函数：通俗版解释"><a href="#构造函数与析构函数：通俗版解释" class="headerlink" title="构造函数与析构函数：通俗版解释"></a><strong>构造函数与析构函数：通俗版解释</strong></h2><hr>
+<h3 id="1-构造函数：对象的“出生证明”"><a href="#1-构造函数：对象的“出生证明”" class="headerlink" title="1. 构造函数：对象的“出生证明”"></a><strong>1. 构造函数：对象的“出生证明”</strong></h3><ul>
+<li><strong>作用</strong>：在对象创建时，自动初始化数据成员。</li>
+<li><strong>特点</strong>：<ul>
+<li>名字与类名相同（如<code>Dog()</code>）。</li>
+<li>无返回值（连<code>void</code>都没有）。</li>
+<li>可以重载（多个构造函数，按参数不同区分）。</li>
+<li><strong>创建对象时，构造函数会被自动调用！！</strong></li>
+</ul>
+</li>
+</ul>
+<p><strong>例子</strong>：</p>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    string name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Dog</span>() &#123; name = <span class="string">&quot;无名&quot;</span>; age = <span class="number">0</span>; &#125;         <span class="comment">// 默认构造函数</span></span><br><span class="line">    <span class="built_in">Dog</span>(string n, <span class="type">int</span> a) &#123; name = n; age = a; &#125; <span class="comment">// 带参数的构造函数</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">**Dog d1;          <span class="comment">// 调用默认构造函数：name=&quot;无名&quot;, age=0**</span></span><br><span class="line"><span class="function">Dog <span class="title">d2</span><span class="params">(<span class="string">&quot;旺财&quot;</span>, <span class="number">3</span>)</span></span>; <span class="comment">// 调用带参数的构造函数：name=&quot;旺财&quot;, age=3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-成员初始化表：高效初始化"><a href="#2-成员初始化表：高效初始化" class="headerlink" title="2. 成员初始化表：高效初始化"></a><strong>2. 成员初始化表：高效初始化</strong></h3><ul>
+<li><strong>用途</strong>：初始化常量（<code>const</code>）、引用（<code>&amp;</code>）或没有默认构造函数的成员对象。</li>
+<li><strong>语法</strong>：在构造函数后用冒号列出初始化项。</li>
+<li><strong>执行顺序</strong>：按成员变量定义的顺序初始化，与初始化表顺序无关。</li>
+</ul>
+<p><strong>例子</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> ID;  <span class="comment">// 常量必须初始化</span></span><br><span class="line">    string&amp; name;  <span class="comment">// 引用必须绑定</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Cat</span>(<span class="type">int</span> id, string&amp; n) : <span class="built_in">ID</span>(id), <span class="built_in">name</span>(n) &#123;&#125; <span class="comment">// 必须用初始化表</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-析构函数：对象的“临终遗言”"><a href="#3-析构函数：对象的“临终遗言”" class="headerlink" title="3. 析构函数：对象的“临终遗言”"></a><strong>3. 析构函数：对象的“临终遗言”</strong></h3><ul>
+<li><strong>作用</strong>：对象销毁前自动调用，释放额外申请的资源（如<strong>动态内存</strong>）。</li>
+<li><strong>特点</strong>：<ul>
+<li>名字是<code>~类名</code>（如<code>~Dog()</code>）。</li>
+<li>无参数，不能重载。</li>
+</ul>
+</li>
+</ul>
+<p><strong>例子</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">String</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">char</span>* str;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">String</span>(<span class="type">const</span> <span class="type">char</span>* s) &#123;</span><br><span class="line">        str = <span class="keyword">new</span> <span class="type">char</span>[<span class="built_in">strlen</span>(s)<span class="number">+1</span>]; <span class="comment">// 动态申请内存</span></span><br><span class="line">        <span class="built_in">strcpy</span>(str, s);</span><br><span class="line">    &#125;</span><br><span class="line">    ~<span class="built_in">String</span>() &#123;</span><br><span class="line">        <span class="keyword">delete</span>[] str; <span class="comment">// 必须释放内存，否则内存泄漏</span></span><br><span class="line">        str = <span class="literal">nullptr</span>; <span class="comment">// 可选，防止野指针</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="4-成员对象的构造与析构顺序"><a href="#4-成员对象的构造与析构顺序" class="headerlink" title="4. 成员对象的构造与析构顺序"></a><strong>4. 成员对象的构造与析构顺序</strong></h3><ul>
+<li><strong>构造顺序</strong>：先构造成员对象，再构造自身。！！！</li>
+<li><strong>析构顺序</strong>：先析构自身，再析构成员对象。！！！</li>
+</ul>
+<p><strong>例子</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Engine</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Engine</span>() &#123; cout &lt;&lt; <span class="string">&quot;引擎启动\\n&quot;</span>; &#125;</span><br><span class="line">    ~<span class="built_in">Engine</span>() &#123; cout &lt;&lt; <span class="string">&quot;引擎关闭\\n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Engine engine; <span class="comment">// 成员对象</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Car</span>() &#123; cout &lt;&lt; <span class="string">&quot;汽车组装完成\\n&quot;</span>; &#125;</span><br><span class="line">    ~<span class="built_in">Car</span>() &#123; cout &lt;&lt; <span class="string">&quot;汽车报废\\n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Car myCar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出：</span></span><br><span class="line"><span class="comment">// 引擎启动 → 汽车组装完成 → 汽车报废 → 引擎关闭</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="5-显式调用析构函数？危险！"><a href="#5-显式调用析构函数？危险！" class="headerlink" title="5. 显式调用析构函数？危险！"></a><strong>5. 显式调用析构函数？危险！</strong></h3><ul>
+<li><strong>问题</strong>：手动调用析构函数不会销毁对象，但会释放资源（暂时归还对象额外申请的资源），导致对象处于无效状态。</li>
+<li><strong>例子</strong>：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">String <span class="title">s</span><span class="params">(<span class="string">&quot;Hello&quot;</span>)</span></span>;</span><br><span class="line">s.~<span class="built_in">String</span>(); <span class="comment">// 释放内存，但s对象还在！</span></span><br><span class="line">s.<span class="built_in">print</span>();   <span class="comment">// 崩溃！因为str已被释放。</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="6-为什么需要构造函数和析构函数？"><a href="#6-为什么需要构造函数和析构函数？" class="headerlink" title="6. 为什么需要构造函数和析构函数？"></a><strong>6. 为什么需要构造函数和析构函数？</strong></h3><ul>
+<li><strong>构造函数</strong>：确保对象出生时状态合法（如年龄不为负数）。</li>
+<li><strong>析构函数</strong>：防止资源泄漏（如内存、文件句柄）。</li>
+</ul>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><ul>
+<li><strong>构造函数</strong>：对象的“出生仪式”，负责初始化。</li>
+<li><strong>析构函数</strong>：对象的“告别仪式”，负责清理。</li>
+<li><strong>成员初始化表</strong>：专门处理常量、引用和复杂成员对象的初始化。</li>
+<li><strong>顺序规则</strong>：成员对象先构造后析构，自身后构造先析构。</li>
+</ul>
+<p><strong>比喻</strong>：</p>
+<ul>
+<li>构造函数像装修队，房子建好后帮你布置家具。</li>
+<li>析构函数像搬家公司，房子拆之前帮你清空家具。</li>
+<li>成员初始化表像装修清单，规定必须先装水电才能刷墙。</li>
+</ul>
+<h2 id="三种常见的初始化成员变量方式"><a href="#三种常见的初始化成员变量方式" class="headerlink" title="三种常见的初始化成员变量方式"></a>三种常见的初始化成员变量方式</h2><p>在 C++ 中，<strong>就地初始化</strong>、<strong>初始化列表</strong>和<strong>构造函数体内初始化</strong>是三种常见的初始化成员变量的方式。它们有不同的使用场景、先后顺序以及相应的限制。下面我们详细分析这三种初始化方式。</p>
+<h3 id="1-就地初始化（In-Class-Initialization）"><a href="#1-就地初始化（In-Class-Initialization）" class="headerlink" title="1. 就地初始化（In-Class Initialization）"></a>1. <strong>就地初始化（In-Class Initialization）</strong></h3><p>就地初始化是指在类定义内部直接为成员变量提供默认值。它在类定义时进行初始化，<strong>适用于普通成员变量（非引用或常量</strong>）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">10</span>;         <span class="comment">// 普通成员变量的就地初始化</span></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> y = <span class="number">20</span>;   <span class="comment">// 常量成员的就地初始化</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">A</span>() &#123;&#125;              <span class="comment">// 构造函数</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>特点</strong>：</p>
+<ul>
+<li>就地初始化为成员变量提供默认值。</li>
+<li>只适用于普通成员变量，<strong>不适用于引用类型</strong>和<strong>常量类型</strong>（常量成员需要在构造函数初始化列表中初始化）。</li>
+<li>如果构造函数没有显式为成员变量提供值，那么成员变量会使用就地初始化提供的默认值。</li>
+</ul>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>简洁，避免在构造函数中显式赋值。</li>
+<li>适用于大多数普通成员变量的初始化。</li>
+</ul>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>就地初始化的优先级比构造函数体内的赋值高，但在初始化列表之前。</li>
+</ul>
+<h3 id="2-初始化列表（Member-Initialization-List）"><a href="#2-初始化列表（Member-Initialization-List）" class="headerlink" title="2. 初始化列表（Member Initialization List）"></a>2. <strong>初始化列表（Member Initialization List）</strong></h3><p>初始化列表是在构造函数的参数后通过 <code>:</code> 来初始化成员变量。它用于初始化所有类型的成员（<strong>包括常量和引用及没有默认构造函数的类类型成员变量</strong>）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> y;</span><br><span class="line">    <span class="type">int</span>&amp; z;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    **<span class="built_in">A</span>() : <span class="built_in">x</span>(<span class="number">10</span>), <span class="built_in">y</span>(<span class="number">20</span>), <span class="built_in">z</span>(x) &#123;&#125; <span class="comment">// 通过初始化列表初始化成员**</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>特点</strong>：</p>
+<ul>
+<li>用于初始化成员变量，尤其是<strong>常量</strong>和<strong>引用类型</strong>成员。</li>
+<li><strong>常量类型的成员变量</strong>必须在初始化列表中进行初始化，不能在构造函数体内进行赋值。</li>
+<li><strong>引用类型的成员变量</strong>也必须在初始化列表中进行初始化。</li>
+<li><strong>没有默认构造函数的类类型成员变量</strong>也必须在初始化列表中进行初始化。如果类中的成员变量是其他类的对象，并且这个类没有默认构造函数（即没有无参构造函数），那么在创建包含它的类的对象时，必须在初始化列表中调用该成员变量所属类的合适构造函数来进行初始化。例如：</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AnotherClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">AnotherClass</span>(<span class="type">int</span> data) : <span class="built_in">data</span>(data) &#123;&#125;  <span class="comment">// 有参构造函数</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> value) : <span class="built_in">anotherObj</span>(value) &#123;&#125;  <span class="comment">// 在初始化列表中初始化AnotherClass类型的成员变量anotherObj</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    AnotherClass anotherObj;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>成员的初始化顺序总是按照在类定义中的声明顺序，而不是在初始化列表中的顺序。</li>
+</ul>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>允许对常量成员、引用成员以及普通成员进行初始化。</li>
+<li>能够在对象创建时直接为常量成员和引用成员提供正确的初始化。</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>无法对默认值提供修改，必须在构造函数初始化列表中进行初始化。</li>
+</ul>
+<h3 id="3-构造函数体内初始化（In-Constructor-Body）"><a href="#3-构造函数体内初始化（In-Constructor-Body）" class="headerlink" title="3. 构造函数体内初始化（In Constructor Body）"></a>3. <strong>构造函数体内初始化（In Constructor Body）</strong></h3><p>在构造函数体内进行初始化，通常是通过赋值语句对成员变量赋值。</p>
+<p>在 C++ 类中，<strong>除了必须在初始化列表中初始化的成员变量</strong>（引用成员变量、常量成员变量、没有默认构造函数的类类型成员变量）<strong>外，其他类型的成员变量均可以在构造函数体内进行初始化。</strong>比如对 <code>const</code> 和引用类型的成员不能使用此方式进行初始化。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> y;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">A</span>() &#123;</span><br><span class="line">        x = <span class="number">10</span>;         <span class="comment">// 普通成员变量</span></span><br><span class="line">        <span class="comment">// y = 20;      // 错误！不能在构造函数体内为 const 成员赋值</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>特点</strong>：</p>
+<ul>
+<li>可以为所有类型的成员变量赋值，通常用于普通成员。</li>
+<li><strong>引用成员和常量成员不能</strong>在构造函数体内赋值（因为它们必须在初始化列表中初始化）。</li>
+<li>构造函数体内的初始化仅发生在对象构造后，已经为成员提供了默认值（如果有的话）。</li>
+</ul>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>适用于普通成员变量，可以根据需要动态计算初始化值。</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>无法初始化引用类型和常量类型的成员变量。</li>
+<li>相比初始化列表，效率略低，因为它们会在默认初始化后再次赋值。</li>
+</ul>
+<h3 id="初始化顺序"><a href="#初始化顺序" class="headerlink" title="@初始化顺序"></a>@初始化顺序</h3><ul>
+<li>不同成员变量的初始化顺序是<strong>它们在类中声明的顺序</strong></li>
+<li>同一成员变量的初始化顺序：<strong>就地初始化≥初始化列表≥构造函数</strong></li>
+</ul>
+<p>例如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> y;</span><br><span class="line">    <span class="type">int</span>&amp; z;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">A</span>() : <span class="built_in">z</span>(x), <span class="built_in">y</span>(<span class="number">20</span>) &#123;&#125; <span class="comment">// y 先初始化，z 后初始化</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结论：各方法的区别与适用情况"><a href="#结论：各方法的区别与适用情况" class="headerlink" title="结论：各方法的区别与适用情况"></a>结论：各方法的区别与适用情况</h3><table>
+<thead>
+<tr>
+<th>初始化方式</th>
+<th>可用成员类型</th>
+<th>使用场景</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>就地初始化</td>
+<td>普通成员变量</td>
+<td>简单的默认值初始化</td>
+<td>代码简洁，适合普通成员变量</td>
+<td>不能用于引用、常量类型成员</td>
+</tr>
+<tr>
+<td>初始化列表</td>
+<td>所有类型的成员</td>
+<td>需要初始化常量或引用类型成员</td>
+<td>支持所有成员类型，初始化顺序明确，效率高</td>
+<td>语法相对复杂，无法提供动态默认值</td>
+</tr>
+<tr>
+<td>构造函数体内初始化</td>
+<td>所有类型的成员</td>
+<td>需要动态计算初始化值</td>
+<td>灵活，适用于普通成员变量，赋值可以更复杂</td>
+<td>无法初始化引用和常量成员，效率较低</td>
+</tr>
+</tbody></table>
+<p>在实际编程中，推荐使用<strong>初始化列表</strong>来初始化类的成员，特别是对于常量和引用类型成员。<strong>就地初始化</strong>适合简单的成员变量初始化，<strong>构造函数体内初始化</strong>则主要用于普通成员的后续赋值。</p>
+<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h2><p>析构函数（<strong>Destructor</strong>）是类的一种特殊成员函数，用于在对象生命周期结束时执行清理操作。当对象的生命周期结束（即对象被销毁）时，析构函数会自动被调用。</p>
+<h3 id="1-析构函数的基本定义"><a href="#1-析构函数的基本定义" class="headerlink" title="1. 析构函数的基本定义"></a>1. <strong>析构函数的基本定义</strong></h3><p>析构函数的名称与类名相同，但前面有一个波浪符号 <code>~</code>。析构函数没有返回类型，也没有参数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ~<span class="built_in">MyClass</span>() &#123;</span><br><span class="line">        <span class="comment">// 析构函数的清理操作</span></span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;对象被销毁了！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-析构函数的特点"><a href="#2-析构函数的特点" class="headerlink" title="2. 析构函数的特点"></a>2. <strong>析构函数的特点</strong></h3><ul>
+<li><strong>自动调用</strong>：析构函数会在对象的生命周期结束时自动调用，通常是在对象超出作用域或被显式销毁时。</li>
+<li><strong>没有参数</strong></li>
+<li><strong>没有返回值</strong>。</li>
+<li><strong>每个类只有一个析构函数</strong>：一个类最多只能有一个析构函数。</li>
+<li><strong>无法被重载</strong>：与构造函数不同，析构函数不能有重载版本。</li>
+<li><strong>无法手动调用</strong>：析构函数是由编译器自动调用的，程序员不能显式地调用析构函数。</li>
+</ul>
+<h3 id="3-析构函数的作用"><a href="#3-析构函数的作用" class="headerlink" title="3. 析构函数的作用"></a>3. <strong>析构函数的作用</strong></h3><p>析构函数的主要作用是进行资源的释放和清理工作，尤其是当类涉及动态内存分配或者拥有外部资源时。常见的用途包括：</p>
+<ul>
+<li><strong>释放通过 <code>new</code> 动态分配的内存</strong>。</li>
+<li>关闭打开的文件句柄。</li>
+<li>释放网络连接或数据库连接等资源。</li>
+<li>清理其他需要手动管理的资源（例如 <code>mutex</code>、<code>socket</code> 等）。</li>
+</ul>
+<h3 id="4-析构函数的自动调用时机"><a href="#4-析构函数的自动调用时机" class="headerlink" title="4. 析构函数的自动调用时机"></a>4. <strong>析构函数的自动调用时机</strong></h3><p>析构函数的调用时机有几个典型情况：</p>
+<ul>
+<li><strong>局部对象</strong>：当一个局部对象超出作用域时，析构函数会被调用。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass obj; <span class="comment">// obj 在函数结束时会被销毁，析构函数会被调用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>动态分配的对象</strong>：如果对象通过 <code>new</code> 创建，那么在调用 <code>delete</code> 时析构函数会被调用。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass* p = <span class="keyword">new</span> <span class="built_in">MyClass</span>(); <span class="comment">// 动态创建对象</span></span><br><span class="line"><span class="keyword">delete</span> p;  <span class="comment">// 释放对象并调用析构函数</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>全局和静态对象</strong>：全局对象或静态对象在程序结束时会调用析构函数。</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><p><strong>⚠️必考！！！！！！！！！！！！！！！！！</strong></p>
+<p><strong>必须手动创建析构函数的情况！！！</strong><br><img src="/imgff/7.png"></p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2025/04/06/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%B7%A5%E5%85%B7%E9%93%BE%EF%BC%88numpy-pandas%EF%BC%89/"
+      title="数据科学工具链（numpy,pandas）"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        数据科学工具链（numpy,pandas）
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/02/27/2-2this%E6%8C%87%E9%92%88/"
+      title="2.2this指针"
+     >
+
+    <p class="title-text">
+      
+        2.2this指针
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+  
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <div id="comment-card" class="comment-card">
+    <div class="main-title-bar">
+      <div class="main-title-dot"></div>
+      <div class="main-title">Comments </div>
+    </div>
+    <div id="vcomments"></div>
+  </div>
+  <script>
+      new Valine({"enable":true,"appId":"RxUcUDCs4PkrAVfsPEoMi8VU-gzGzoHsz","appKey":"P8P94qqk5PEJXgLeEEh2qJTr","placeholder":"大家可以在上面留下你的github网址，一起交流学习呀～Everyone can leave your Github URL at the above website, and let's communicate and learn together~","pageSize":10,"highlight":true,"serverURLs":null,"el":"#vcomments"});
+  </script>
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 Ruofan Wang<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>

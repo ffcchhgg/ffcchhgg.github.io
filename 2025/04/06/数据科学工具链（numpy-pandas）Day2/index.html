@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>数据科学工具链（numpy,pandas）Day2 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="前言接上次，了解到了创建虚拟环境可以带来很多好处，便学习了一下，并实操了venv创建虚拟环境，今天我继续学习了如何使用conda创建虚拟环境并进行了实操，并了解了一下基本存储机制，以及如何在这种方式创建的虚拟环境下安装pytorch，还了解了一下对应的cuda(toolkit). 下面这个链接是我和ChatGPT的聊天对话。    ⭐       https:&#x2F;&#x2F;chatgpt.com&#x2F;share">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据科学工具链（numpy,pandas）Day2">
+<meta property="og:url" content="https://www.ffcchhgg.cn/2025/04/06/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%B7%A5%E5%85%B7%E9%93%BE%EF%BC%88numpy-pandas%EF%BC%89Day2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言接上次，了解到了创建虚拟环境可以带来很多好处，便学习了一下，并实操了venv创建虚拟环境，今天我继续学习了如何使用conda创建虚拟环境并进行了实操，并了解了一下基本存储机制，以及如何在这种方式创建的虚拟环境下安装pytorch，还了解了一下对应的cuda(toolkit). 下面这个链接是我和ChatGPT的聊天对话。    ⭐       https:&#x2F;&#x2F;chatgpt.com&#x2F;share">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/18.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/15.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/16.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/17.png">
+<meta property="article:published_time" content="2025-04-06T12:32:41.000Z">
+<meta property="article:modified_time" content="2025-04-06T12:39:57.355Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.ffcchhgg.cn/imgff/18.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/images/banner.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Hexo </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/images/avatar.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Ruofan Wang </div>
+      <div class="dot"></div>
+      <div class="subtitle">Betelgeuse </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/ffcchhgg" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/%E9%AB%98%E7%A8%8B/">
+                高程
+                <div class="category-count">3</div>
+            </a>
+        <div class="children"><div class="category-box">
+            <a class="category-link" href="/categories/%E9%AB%98%E7%A8%8B/%E7%AC%AC%E4%BA%8C%E7%AB%A0/">
+                第二章
+                <div class="category-count">3</div>
+            </a>
+        </div></div>
+            <a class="category-link" href="/categories/Daily/">
+                Daily
+                <div class="category-count">1</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Daily/" rel="tag">Daily</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%AB%98%E7%A8%8B/" rel="tag">高程</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2025/10/29/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/README/" title="README" >
+            <div class="recent-link-text">
+              README
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/08/07/ICS-PA1-%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA/" title="ICS-PA1-最简单的计算机" >
+            <div class="recent-link-text">
+              ICS-PA1-最简单的计算机
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/08/01/ICS-PA0-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="ICS-PA0(开发环境配置)" >
+            <div class="recent-link-text">
+              ICS-PA0(开发环境配置)
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/07/23/github%E4%BB%93%E5%BA%93%E5%8D%8F%E4%BD%9C%E6%B5%81%E7%A8%8B/" title="github仓库协作流程" >
+            <div class="recent-link-text">
+              github仓库协作流程
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/04/06/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%B7%A5%E5%85%B7%E9%93%BE%EF%BC%88numpy-pandas%EF%BC%89Day2/" title="数据科学工具链（numpy,pandas）Day2" >
+            <div class="recent-link-text">
+              数据科学工具链（numpy,pandas）Day2
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-数据科学工具链（numpy-pandas）Day2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        数据科学工具链（numpy,pandas）Day2
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-04-06T12:32:41.000Z" itemprop="datePublished">2025-04-06</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+    Uncategorized 
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.8k words 
+          </div>
+        </div>
+        
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>接上次，了解到了创建虚拟环境可以带来很多好处，便学习了一下，并实操了venv创建虚拟环境，今天我继续学习了如何使用conda创建虚拟环境并进行了实操，并了解了一下基本存储机制，以及如何在这种方式创建的虚拟环境下安装pytorch，还了解了一下对应的cuda(toolkit).</p>
+<p>下面这个链接是我和ChatGPT的聊天对话。</p>
+<p>   ⭐       <a target="_blank" rel="noopener" href="https://chatgpt.com/share/67f14d8b-62b4-8002-a8dd-a2a2e8710c39">https://chatgpt.com/share/67f14d8b-62b4-8002-a8dd-a2a2e8710c39</a></p>
+<h2 id="使用conda创建虚拟环境"><a href="#使用conda创建虚拟环境" class="headerlink" title="使用conda创建虚拟环境"></a>使用conda创建虚拟环境</h2><p>前提：anaconda&#x2F;miniconda之前我已经安装好了anaconda再次不在赘述。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p><strong>✅ 第一步：打开 Anaconda Prompt（或者普通 CMD 也行,我使用的Anaconda Prompt）</strong></p>
+<p><strong>✅ 第二步：创建一个新的 conda 虚拟环境</strong></p>
+<p>这里我准备创建一个叫 <code>aiproject</code> 的 Python 3.10 环境（python版本可以自己根据需求定义）。</p>
+<p>首先输入：<code>conda create -n aiproject python=3.10</code></p>
+<p><code>-n aiproject</code>：虚拟环境名字(可随意更改)</p>
+<p>（在哪个位置输入这行命令都一样，没有关系，待会儿进行详细介绍）</p>
+<p>然后系统会开始检查版本，并提示你需要安装哪些包，需要输入：y。等待几分钟之，它会自动下载并安装所需内容。</p>
+<p><strong>✅ 第三步：激活这个环境（与位置有关）</strong></p>
+<p>先进入<strong>你想要使用这个环境的文件夹</strong>下：比如<code>cd D:\MyProjects\AIProject</code></p>
+<p>接着输入：<code>conda activate aiproject</code></p>
+<p>会看到提示符变成这样：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(aiproject) C:\Users\你的用户名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这就表示现在已经“进入”了这个新的虚拟环境！</p>
+<p><strong>✅ 第四步：安装需要的第三方包（与位置无关）</strong></p>
+<p>比如我想要安装 <code>pandas</code>、<code>numpy</code> 和 <code>matplotlib</code>,输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pandas numpy matplotlib</span><br></pre></td></tr></table></figure>
+
+<p>或者使用 pip也没问题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pandas numpy matplotlib</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，这个环境就已经可以跑很多程序了！</p>
+<p>👉 <strong>这些包是被安装到 <code>E:\zancun\softwares\Anaconda2\envs\aiproject\Lib\site-packages</code> 下的</strong>，而不是你项目目录！</p>
+<p><strong>✅ 第五步：测试是否安装成功（推荐）</strong></p>
+<p>输入：<code>python</code></p>
+<p>进入 Python 解释器，然后输入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas</span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;✅ 所有库导入成功！&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果没报错(输出“✅ 所有库导入成功！“)，说明一切安装正确。输入 <code>exit()</code> 回到命令行。</p>
+<p><strong>✅ 第六步：退出虚拟环境（用完记得退）</strong></p>
+<p>输入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda deactivate</span><br></pre></td></tr></table></figure>
+
+<p>提示符前的 <code>(aiproject)</code> 消失，表示你现在已经退出虚拟环境。</p>
+<h3 id="questions"><a href="#questions" class="headerlink" title="questions"></a>questions</h3><p><strong>是不是使用conda创建的虚拟环境终端各种包都存在我电脑的E盘的Anaconda2下面？</strong></p>
+<p>✅ 1. 是的！<strong>conda 创建的虚拟环境默认都在电脑上的 Anaconda 安装目录下,不会存在项目目录中。</strong></p>
+<p>我电脑上装的是：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">E:\zancun\softwares\Anaconda2\</span></span><br></pre></td></tr></table></figure>
+
+<p>那么我每次用以下命令创建虚拟环境的时候：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create -n aiproject python=3.10</span><br></pre></td></tr></table></figure>
+
+<p>它就会把虚拟环境存到这里：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">E:\zancun\softwares\Anaconda2\envs\aiproject\</span></span><br></pre></td></tr></table></figure>
+
+<p>也就是说：</p>
+<ul>
+<li>✔ 所有包（numpy&#x2F;pandas&#x2F;matplotlib）</li>
+<li>✔ 环境自己的 python.exe</li>
+<li>✔ pip、conda、脚本工具</li>
+</ul>
+<p>全都被自动放在这个独立的文件夹里。不用操心包在哪、是否冲突，它帮你隔离好了！</p>
+<p><strong>我的项目文件是不是可以存储在我想存的任何地方呀？</strong></p>
+<p>✅ 2. 是的！项目代码可以放在我想放的任何位置！</p>
+<p>🌟 <strong>想放哪都行！只要在运行前激活环境即可</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda activate aiproject</span><br><span class="line"><span class="built_in">cd</span> D:\MyProjects\AIProject</span><br><span class="line">python main.py</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>💡 项目的存储位置和虚拟环境的位置是彼此独立的！这就是 conda 的魅力：灵活 + 隔离</p>
+</blockquote>
+<p>ChatGPT给我建议的项目结构：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AIProject/</span><br><span class="line">├── <span class="selector-tag">main</span><span class="selector-class">.py</span></span><br><span class="line">├── utils/</span><br><span class="line">├── data/</span><br><span class="line">├── conda_guide<span class="selector-class">.md</span></span><br><span class="line">└── README<span class="selector-class">.md</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>🚫 注意！不要混淆 venv 和 conda 的存放逻辑：</strong></p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>包和解释器存哪？</th>
+<th>项目代码存哪？</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>venv</code></td>
+<td>默认存到你指定的项目目录下（项目内）</td>
+<td>同一个文件夹，比较“绑定”</td>
+</tr>
+<tr>
+<td><code>conda</code></td>
+<td>默认都放在 Anaconda 安装目录的 <code>envs/</code> 里</td>
+<td>项目代码爱放哪放哪，自由隔离</td>
+</tr>
+</tbody></table>
+<p><strong>🔄 也就是说：</strong></p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>包会被存在哪里？</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>激活某个 conda 环境后安装包</td>
+<td>存到该虚拟环境的 <code>Lib\site-packages</code> 中</td>
+</tr>
+<tr>
+<td>没有激活环境、在 base 里装包</td>
+<td>装到 base 环境中（默认的那个）</td>
+</tr>
+<tr>
+<td>使用 <code>venv</code> 在项目中建虚拟环境</td>
+<td>包会出现在项目目录下（比如 <code>./env/Lib/...</code>）</td>
+</tr>
+</tbody></table>
+<p><strong>Anaconda 自带了 pandas&#x2F;numpy，创建虚拟环境后还要再装一遍吗？</strong></p>
+<p><strong>需要</strong></p>
+<p>✅ Anaconda 是个“巨型默认环境”</p>
+<p>刚安装完 Anaconda 时，它自动帮你创建了一个叫做 <strong><code>base</code></strong> 的默认环境，这个环境里确实已经安装好了：</p>
+<ul>
+<li><code>pandas</code> <code>numpy</code> <code>matplotlib</code> <code>scikit-learn</code> <code>jupyter</code>…</li>
+</ul>
+<p>而且这些包都安装在：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:\zancun\softwares\Anaconda2\ (<span class="keyword">base</span> 环境路径)</span><br></pre></td></tr></table></figure>
+
+<p>❌ 但是！<strong>不建议在 base 环境里开发项目</strong></p>
+<p>原因如下：</p>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>容易冲突</td>
+<td>base 环境太大，可能与你项目用到的版本冲突</td>
+</tr>
+<tr>
+<td>不可控</td>
+<td>升级包可能影响整个系统</td>
+</tr>
+<tr>
+<td>无法复现</td>
+<td>难以在别人的电脑重建 base 环境</td>
+</tr>
+</tbody></table>
+<p>✅ 推荐创建 <strong>自己的虚拟环境</strong> 来开发项目！</p>
+<p>这样做的后果是：</p>
+<p>🔧 新建的环境是 <strong>干净的</strong>，<strong>默认是没有装任何第三方库的</strong>，你需要 <strong>自己选择需要什么装什么</strong>。</p>
+<p>比如新建的 <code>aiproject</code> 虚拟环境，默认只有：</p>
+<ul>
+<li>Python 本体</li>
+<li>pip、setuptools、wheel 这些基础工具</li>
+</ul>
+<p>所以需要手动装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pandas numpy matplotlib</span><br></pre></td></tr></table></figure>
+
+<p>这样更轻量、更可控、更稳定！</p>
+<h2 id="在-conda-虚拟环境中安装-PyTorch"><a href="#在-conda-虚拟环境中安装-PyTorch" class="headerlink" title="在 conda 虚拟环境中安装 PyTorch"></a>在 conda 虚拟环境中安装 PyTorch</h2><h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><p><strong>💡1. 先激活你要安装 PyTorch 的环境</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate aiproject</span><br></pre></td></tr></table></figure>
+
+<p><strong>💡2. 根据需要选择安装相应的cudatoolkit</strong></p>
+<p>🌟 我的Anaconda的系统全局CUDA是11.8</p>
+<p>如果你将要进行的项目需要的CUDA版本和全局CUDA版本不一样，需要升级&#x2F;降级CUDA版本（如从11.8到12.1），则需要在安装pytorch之前进行一下操作（我暂时还没有进行实操）：</p>
+<ul>
+<li><strong>操作步骤</strong>：<ol>
+<li><p>更新 **<code>cudatoolkit</code>**：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install cudatoolkit=12.1 -c nvidia</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>重新安装 PyTorch（确保 PyTorch 版本与新 CUDA 兼容）：</strong></p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch=2.1.0 torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证版本一致性：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python</span><br></pre></td></tr></table></figure>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>(torch.version.cuda)  <span class="comment"># 应显示 12.1</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<p><strong>💡3. 去官方 PyTorch 安装指令生成器</strong></p>
+<p>打开这个网址（推荐收藏）：</p>
+<p>👉 <a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p>
+<p><strong>💡4. 根据需要和自己电脑的配置选择相应的配置</strong></p>
+<p>在如图界面进行选择</p>
+<p><img src="/imgff/18.png"></p>
+<p>因为我有 Nvidia 显卡（支持 CUDA），所以就将上图中最后一行Run this Command中给的内容复制下来在Anaconda Prompt里跑就可以了，就会开始安装Pytoch了.</p>
+<p><strong>💡5. 安装完成后测试是否成功：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)  <span class="comment">#这个也可以用来查看该环境下的pytorch版本</span></span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())  <span class="comment"># 如果是 CPU 版，这里是 False</span></span><br></pre></td></tr></table></figure>
+
+<p>✅ 成功导入就说明安装没问题啦！</p>
+<h3 id="Questions"><a href="#Questions" class="headerlink" title="Questions"></a>Questions</h3><p><strong>🧠 一、在虚拟环境中安装的 PyTorch 是否对整个 Anaconda 都适用？</strong></p>
+<p>❌ 不适用！</p>
+<p>PyTorch（或任何包）一旦<strong>安装在某个虚拟环境中</strong>，<strong>就只在这个虚拟环境中可用</strong>，对其他环境（包括 base 环境）无效。</p>
+<p>这正是虚拟环境的本质——<strong>隔离</strong>！</p>
+<p><strong>🧠 二、如果我在另一个新环境中也想用 PyTorch，是否要重新安装？</strong></p>
+<p>✅ 是的，你需要在<strong>每个需要 PyTorch 的虚拟环境中重新安装一次</strong>。</p>
+<p><strong>🧠 三、如果我不在虚拟环境（在base环境）中安装 PyTorch 会有什么后果？</strong></p>
+<p>如果你在 <strong>base 环境</strong> 或没激活任何环境的终端中直接运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch torchvision torchaudio -c pytorch</span><br></pre></td></tr></table></figure>
+
+<p>那么 PyTorch 会被安装到你的 <code>base</code> 环境里，这样带来的问题是：</p>
+<p>🚨 后果一：污染 base 环境</p>
+<p>容易和 Anaconda 自带的包冲突，搞出各种奇怪问题（版本不一致、运行报错等）。</p>
+<p>🚨 后果二：无法复现</p>
+<p>别人不能复制你的项目环境，只能干瞪眼说 “为什么我运行不了？”</p>
+<p>🚨 后果三：<strong>不推荐开发！！！</strong></p>
+<p>base 环境是整个 Anaconda 的核心系统，出问题可能让所有环境都出问题！</p>
+<p><strong>🛡️ 最佳实践总结表</strong></p>
+<table>
+<thead>
+<tr>
+<th>操作行为</th>
+<th>建议 or 结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>在 base 环境中装 PyTorch</td>
+<td>❌ 不推荐</td>
+</tr>
+<tr>
+<td>在自己创建的虚拟环境中装 PyTorch</td>
+<td>✅ 强烈推荐</td>
+</tr>
+<tr>
+<td>想要多个项目使用 PyTorch</td>
+<td>每个环境分别安装一次</td>
+</tr>
+<tr>
+<td>不小心装错了</td>
+<td><code>conda uninstall</code> 卸载重新来</td>
+</tr>
+</tbody></table>
+<p><strong>🧠 四、如何快速查看环境中是否有某个包呢？</strong></p>
+<p>💡 小技巧：一条命令快速查看环境中是否有某个包</p>
+<p>你可以用这个命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**conda list | findstr torch**</span><br></pre></td></tr></table></figure>
+
+<p>它会过滤出环境中含 “torch” 的所有包，清晰明了 ✅</p>
+<p>✅ 额外：快速列出<strong>所有环境的位置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda <span class="built_in">env</span> list</span><br></pre></td></tr></table></figure>
+
+<p>你会看到：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># conda environments:</span></span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="keyword">base</span>                     *  E:\zancun\softwares\Anaconda2</span><br><span class="line">aiproject                   E:\zancun\softwares\Anaconda2\envs\aiproject</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>这让你明确知道：当前激活的是哪个环境，它的路径是哪里（*标记的是当前所在环境）。</p>
+<h2 id="如何在-VS-Code-PyCharm-使用虚拟环境？"><a href="#如何在-VS-Code-PyCharm-使用虚拟环境？" class="headerlink" title="如何在 VS Code &#x2F; PyCharm 使用虚拟环境？"></a>如何在 VS Code &#x2F; PyCharm 使用虚拟环境？</h2><h3 id="🧩-VS-Code-设置虚拟环境（推荐）"><a href="#🧩-VS-Code-设置虚拟环境（推荐）" class="headerlink" title="🧩 VS Code 设置虚拟环境（推荐）"></a>🧩 VS Code 设置虚拟环境（推荐）</h3><ol>
+<li>打开你的项目文件夹（比如 <code>ai project</code><strong>）</strong></li>
+<li><strong>按 <code>Ctrl + Shift + P</code> 打开命令面板</strong></li>
+<li>输入并选择 👉 <code>Python: Select Interpreter</code></li>
+<li>找到你创建的虚拟环境路径，像这样：</li>
+</ol>
+<p>(Conda) aiproject: Python 3.10 (E:\zancun\softwares\Anaconda2\envs\aiproject\python.exe)</p>
+<p>选择后，终端就会自动激活你这个环境！运行、调试都没问题～</p>
+<h3 id="🧩-PyCharm-设置-Conda-虚拟环境"><a href="#🧩-PyCharm-设置-Conda-虚拟环境" class="headerlink" title="🧩 PyCharm 设置 Conda 虚拟环境"></a>🧩 PyCharm 设置 Conda 虚拟环境</h3><ul>
+<li>打开项目后，点击右下角的 Python 解释器设置</li>
+<li>点击 <code>添加新的解释器</code> → 选择 <code>添加本地解释器...</code>→</li>
+<li>在新的窗口选择 <code>选择现有</code>→ <strong>类型</strong>选择 <code>Conda</code>→ <strong>环境</strong>选择你所在环境的名字→ 确定</li>
+</ul>
+<p><img src="/imgff/15.png"></p>
+<p><img src="/imgff/16.png"></p>
+<p><img src="/imgff/17.png"></p>
+<p>好啦，今天先到这里，也算是终于理清了两种配置虚拟环境的方法，也弄清楚了该如何安装、改变相应的CUDA，Pytorch。依然和上次一样，ChatGPT给了我好多Bonus，比如<strong>“PyTorch 虚拟环境复用模版”，</strong>“<strong>一键配置 PyTorch 环境” 的 <code>.bat</code> 脚本。</strong></p>
+<p>但是由于现在我还没有做具体的的项目，文件夹里其实也是只有一个main.py，等我过几天把张岩导师发的几篇论文的代码库拉取下来再进行尝试叭~下次差不多就可以开始真正对于pandas，numpy等的学习啦，加油加油！！</p>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2025/07/23/github%E4%BB%93%E5%BA%93%E5%8D%8F%E4%BD%9C%E6%B5%81%E7%A8%8B/"
+      title="github仓库协作流程"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        github仓库协作流程
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/04/06/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%B7%A5%E5%85%B7%E9%93%BE%EF%BC%88numpy-pandas%EF%BC%89/"
+      title="数据科学工具链（numpy,pandas）"
+     >
+
+    <p class="title-text">
+      
+        数据科学工具链（numpy,pandas）
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+  
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <div id="comment-card" class="comment-card">
+    <div class="main-title-bar">
+      <div class="main-title-dot"></div>
+      <div class="main-title">Comments </div>
+    </div>
+    <div id="vcomments"></div>
+  </div>
+  <script>
+      new Valine({"enable":true,"appId":"RxUcUDCs4PkrAVfsPEoMi8VU-gzGzoHsz","appKey":"P8P94qqk5PEJXgLeEEh2qJTr","placeholder":"大家可以在上面留下你的github网址，一起交流学习呀～Everyone can leave your Github URL at the above website, and let's communicate and learn together~","pageSize":10,"highlight":true,"serverURLs":null,"el":"#vcomments"});
+  </script>
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 Ruofan Wang<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>
