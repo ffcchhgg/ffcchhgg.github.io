@@ -755,6 +755,176 @@ ChatGPT给我的建议：
    
 
 
+<article id="post-2-3构造函数与析构函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/03/01/2-3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/">2.3构造函数与析构函数</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-03-01T11:48:31.000Z" itemprop="datePublished">2025-03-01</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E9%AB%98%E7%A8%8B/">高程</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.8k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AB%98%E7%A8%8B/" rel="tag">高程</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              2.3构造函数与析构函数
+构造函数与析构函数：通俗版解释
+1. 构造函数：对象的“出生证明”
+作用：在对象创建时，自动初始化数据成员。
+特点：
+名字与类名相同（如Dog()）。
+无返回值（连void都没有）。
+可以重载（多个构造函数，按参数不同区分）。
+创建对象时，构造函数会被自动调用！！
+
+
+
+例子：
+
+1234567891011class Dog &#123;private:    string name;    int age;public:    Dog() &#123; name = &quot;无名&quot;; age = 0; &#125;         // 默认构造函数    Dog(string n, int a) &#123; name = n; age = a; &#125; // 带参数的构造函数&#125;;**Dog d1;          // 调用默认构造函数：name=&quot;无名&quot;, age=0**Dog d2(&quot;旺财&quot;, 3); // 调用带参数的构造函数：name=&quot;旺财&quot;, a...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/03/01/2-3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-2-2this指针" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/02/28/2-2this%E6%8C%87%E9%92%88/">2.2this指针</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-02-28T09:48:06.000Z" itemprop="datePublished">2025-02-28</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E9%AB%98%E7%A8%8B/">高程</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            1.4k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AB%98%E7%A8%8B/" rel="tag">高程</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              2-2this指针
+“this指针”通俗版解释
+1. 为什么需要this指针？想象你有一个班级，每个学生（对象）都有自己的姓名和成绩（数据），但全班共用同一本教材（成员函数）。
+
+老师提问时，教材里的答案要对应到具体学生。比如问“你的成绩是多少？”，教材需要知道当前问的是哪个学生。
+this指针就像老师手里的名单，告诉教材：“现在操作的是张三，下一个是李四”。
+
+代码例子：
+123456789101112class Student &#123;private:    int score;public:    void setScore(int s) &#123;        score = s; // 这里的score属于当前调用setScore的对象    &#125;&#125;;Student zhangsan, lisi;zhangsan.setScore(90); // this指向zhangsanlisi.setScore(85);     // this指向lisi
+
+
+2. this指针是什么？
+隐藏的指针：每个成员函数（非静态）都有一个隐藏参数this，指向调...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/02/28/2-2this%E6%8C%87%E9%92%88/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
 <article id="post-2-1对象与类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
    
   <div class="article-inner">
@@ -766,7 +936,7 @@ ChatGPT给我的建议：
   
     
       <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/02/28/2-1%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">2.1对象与类</a>
+        <a class="p-name article-title" href="/2025/02/27/2-1%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/">2.1对象与类</a>
       </h1>
     
   
@@ -774,7 +944,7 @@ ChatGPT给我的建议：
 
         <div class='meta-info-bar'>
           <div class="meta-info">
-  <time class="dt-published" datetime="2025-02-28T09:34:59.000Z" itemprop="datePublished">2025-02-28</time>
+  <time class="dt-published" datetime="2025-02-27T09:34:59.000Z" itemprop="datePublished">2025-02-27</time>
 </div>
           <div class="need-seperator meta-info">
             <div class="meta-cate-flex">
@@ -825,177 +995,7 @@ ChatGPT给我的建议：
      
     <a class="right-panel  non-pic  "
       
-      href="/2025/02/28/2-1%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-2-3构造函数与析构函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/02/27/2-3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/">2.3构造函数与析构函数</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-02-27T11:48:31.000Z" itemprop="datePublished">2025-02-27</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E9%AB%98%E7%A8%8B/">高程</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4.8k words 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AB%98%E7%A8%8B/" rel="tag">高程</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              2.3构造函数与析构函数
-构造函数与析构函数：通俗版解释
-1. 构造函数：对象的“出生证明”
-作用：在对象创建时，自动初始化数据成员。
-特点：
-名字与类名相同（如Dog()）。
-无返回值（连void都没有）。
-可以重载（多个构造函数，按参数不同区分）。
-创建对象时，构造函数会被自动调用！！
-
-
-
-例子：
-
-1234567891011class Dog &#123;private:    string name;    int age;public:    Dog() &#123; name = &quot;无名&quot;; age = 0; &#125;         // 默认构造函数    Dog(string n, int a) &#123; name = n; age = a; &#125; // 带参数的构造函数&#125;;**Dog d1;          // 调用默认构造函数：name=&quot;无名&quot;, age=0**Dog d2(&quot;旺财&quot;, 3); // 调用带参数的构造函数：name=&quot;旺财&quot;, a...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/02/27/2-3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-2-2this指针" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/02/27/2-2this%E6%8C%87%E9%92%88/">2.2this指针</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-02-27T09:48:06.000Z" itemprop="datePublished">2025-02-27</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E9%AB%98%E7%A8%8B/">高程</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1.4k words 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AB%98%E7%A8%8B/" rel="tag">高程</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              2-2this指针
-“this指针”通俗版解释
-1. 为什么需要this指针？想象你有一个班级，每个学生（对象）都有自己的姓名和成绩（数据），但全班共用同一本教材（成员函数）。
-
-老师提问时，教材里的答案要对应到具体学生。比如问“你的成绩是多少？”，教材需要知道当前问的是哪个学生。
-this指针就像老师手里的名单，告诉教材：“现在操作的是张三，下一个是李四”。
-
-代码例子：
-123456789101112class Student &#123;private:    int score;public:    void setScore(int s) &#123;        score = s; // 这里的score属于当前调用setScore的对象    &#125;&#125;;Student zhangsan, lisi;zhangsan.setScore(90); // this指向zhangsanlisi.setScore(85);     // this指向lisi
-
-
-2. this指针是什么？
-隐藏的指针：每个成员函数（非静态）都有一个隐藏参数this，指向调...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/02/27/2-2this%E6%8C%87%E9%92%88/" 
+      href="/2025/02/27/2-1%E5%AF%B9%E8%B1%A1%E4%B8%8E%E7%B1%BB/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
