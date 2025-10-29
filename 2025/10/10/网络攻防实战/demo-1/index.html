@@ -20,19 +20,21 @@
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="第 1 次打靶实验：对demo1进行靶机渗透测试并获得 root 权限  一、实验目的 取得目标靶机的 root 权限。 使用主机发现、端口扫描等攻击手段。   二、实验内容1) 主机发现首先执行命令： 1nmap -sn -iL ranges.txt -oA pingsweep -PE    由此可以得到目标主机地址大概率就是 10.0.2.7（也可以使用 apr-scan -l 进行扫描） 也">
+  <meta name="description" content="第 1 次打靶实验：对demo1进行靶机渗透测试并获得 root 权限  一、实验目的 取得目标靶机的 root 权限。 使用主机发现、端口扫描等攻击手段。   二、实验内容1) 主机发现首先执行命令： 1nmap -sn -iL ranges.txt -oA pingsweep -PE   由此可以得到目标主机地址大概率就是 10.0.2.7（也可以使用 apr-scan -l 进行扫描） 也可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="demo_1打靶">
 <meta property="og:url" content="https://www.ffcchhgg.cn/2025/10/10/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="第 1 次打靶实验：对demo1进行靶机渗透测试并获得 root 权限  一、实验目的 取得目标靶机的 root 权限。 使用主机发现、端口扫描等攻击手段。   二、实验内容1) 主机发现首先执行命令： 1nmap -sn -iL ranges.txt -oA pingsweep -PE    由此可以得到目标主机地址大概率就是 10.0.2.7（也可以使用 apr-scan -l 进行扫描） 也">
+<meta property="og:description" content="第 1 次打靶实验：对demo1进行靶机渗透测试并获得 root 权限  一、实验目的 取得目标靶机的 root 权限。 使用主机发现、端口扫描等攻击手段。   二、实验内容1) 主机发现首先执行命令： 1nmap -sn -iL ranges.txt -oA pingsweep -PE   由此可以得到目标主机地址大概率就是 10.0.2.7（也可以使用 apr-scan -l 进行扫描） 也可">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo1/demo-1-1.png">
 <meta property="article:published_time" content="2025-10-10T10:37:40.000Z">
-<meta property="article:modified_time" content="2025-10-29T11:38:58.568Z">
+<meta property="article:modified_time" content="2025-10-29T11:41:41.197Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="网络攻防">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.ffcchhgg.cn/imgff/demo1/demo-1-1.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -288,8 +290,7 @@
 <h2 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h2><h3 id="1-主机发现"><a href="#1-主机发现" class="headerlink" title="1) 主机发现"></a>1) 主机发现</h3><p><strong>首先执行命令：</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn -iL ranges.txt -oA pingsweep -PE</span><br></pre></td></tr></table></figure>
 
-
-
+<p><img src="/imgff/demo1/demo-1-1.png"></p>
 <p>由此可以得到目标主机地址大概率就是 <code>10.0.2.7</code><br>（也可以使用 <code>apr-scan -l</code> 进行扫描）</p>
 <p>也可以通过 <code>grep</code> 使输出更简洁好看：</p>
 <p><strong>命令：</strong></p>
