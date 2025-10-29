@@ -165,7 +165,7 @@
         
             <a class="category-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/">
                 网络攻防实战
-                <div class="category-count">3</div>
+                <div class="category-count">4</div>
             </a>
         </div>
     </div>
@@ -195,6 +195,12 @@
             </div>
           </a>
         
+          <a class="recent-link" href="/2025/10/22/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-3/" title="demo_3打靶" >
+            <div class="recent-link-text">
+              demo_3打靶
+            </div>
+          </a>
+        
           <a class="recent-link" href="/2025/10/14/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-2/" title="demo_2打靶" >
             <div class="recent-link-text">
               demo_2打靶
@@ -210,12 +216,6 @@
           <a class="recent-link" href="/2025/08/07/ICS-PA1-%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA/" title="ICS-PA1-最简单的计算机" >
             <div class="recent-link-text">
               ICS-PA1-最简单的计算机
-            </div>
-          </a>
-        
-          <a class="recent-link" href="/2025/08/01/ICS-PA0-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" title="ICS-PA0(开发环境配置)" >
-            <div class="recent-link-text">
-              ICS-PA0(开发环境配置)
             </div>
           </a>
         
@@ -286,6 +286,104 @@
     <a class="right-panel  non-pic  "
       
       href="/2025/10/29/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/README/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
+   
+
+
+<article id="post-网络攻防实战/demo-3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/10/22/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-3/">demo_3打靶</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-10-22T12:39:28.000Z" itemprop="datePublished">2025-10-22</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/">网络攻防实战</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            2.2k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" rel="tag">网络攻防</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              下面是把你提供的 LaTeX 内容等价整理为 Markdown（仅做排版转换，未改动技术步骤与结论）。可直接粘贴到 Hexo&#x2F;Markdown 编辑器使用。
+
+第 3 次实验：对demo3进行靶机渗透测试并获得 root 权限
+一、实验目的
+取得目标靶机 demo3 的 root 权限。
+使用主机发现、端口扫描等攻击手段。
+
+
+二、实验内容1) 主机发现首先执行命令：
+12sudo -iarp-scan -l
+
+
+由此得到目标主机地址为 10.0.2.5。
+
+2) 端口发现与扫描执行以下命令对目标进行扫描（进一步验证是否为靶机；如不考虑时间可 nmap -p- 10.0.2.5）：
+1nmap 10.0.2.15
+
+
+对靶机进行服务探测，确认端口服务与版本：
+1nmap -p22,8080 -sV 10.0.2.5
+
+
+发现 8080 端口为 Web 服务（检索可知是某 Web 开发库）。同时得知目标系统支持 Python 2.7。
+
+3) Web 渗透访问 10.0.2.5:8080，页面为“反病毒扫描”平台界面：
+
+启用 FoxyProxy → 打开 Burp Su...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/10/22/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-3/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
@@ -938,90 +1036,6 @@ ChatGPT给我的建议：
     <a class="right-panel  non-pic  "
       
       href="/2025/03/01/2-3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-2-2this指针" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/02/28/2-2this%E6%8C%87%E9%92%88/">2.2this指针</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-02-28T09:48:06.000Z" itemprop="datePublished">2025-02-28</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E9%AB%98%E7%A8%8B/">高程</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            1.4k words 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AB%98%E7%A8%8B/" rel="tag">高程</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              2-2this指针
-“this指针”通俗版解释
-1. 为什么需要this指针？想象你有一个班级，每个学生（对象）都有自己的姓名和成绩（数据），但全班共用同一本教材（成员函数）。
-
-老师提问时，教材里的答案要对应到具体学生。比如问“你的成绩是多少？”，教材需要知道当前问的是哪个学生。
-this指针就像老师手里的名单，告诉教材：“现在操作的是张三，下一个是李四”。
-
-代码例子：
-123456789101112class Student &#123;private:    int score;public:    void setScore(int s) &#123;        score = s; // 这里的score属于当前调用setScore的对象    &#125;&#125;;Student zhangsan, lisi;zhangsan.setScore(90); // this指向zhangsanlisi.setScore(85);     // this指向lisi
-
-
-2. this指针是什么？
-隐藏的指针：每个成员函数（非静态）都有一个隐藏参数this，指向调...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/02/28/2-2this%E6%8C%87%E9%92%88/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>
