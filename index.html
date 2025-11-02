@@ -165,7 +165,7 @@
         
             <a class="category-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/">
                 网络攻防实战
-                <div class="category-count">4</div>
+                <div class="category-count">5</div>
             </a>
         </div>
     </div>
@@ -188,6 +188,12 @@
     <div class="widget">
       <h3 class="widget-title">Recent Posts</h3>
       <ul>
+        
+          <a class="recent-link" href="/2025/11/02/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-4/" title="demo_4打靶" >
+            <div class="recent-link-text">
+              demo_4打靶
+            </div>
+          </a>
         
           <a class="recent-link" href="/2025/10/29/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/README/" title="README" >
             <div class="recent-link-text">
@@ -213,12 +219,6 @@
             </div>
           </a>
         
-          <a class="recent-link" href="/2025/08/07/ICS-PA1-%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA/" title="ICS-PA1-最简单的计算机" >
-            <div class="recent-link-text">
-              ICS-PA1-最简单的计算机
-            </div>
-          </a>
-        
       </ul>
     </div>
   </div>
@@ -229,6 +229,105 @@
     </div>
     <div id="content-body">
       
+   
+
+
+<article id="post-网络攻防实战/demo-4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+   
+  <div class="article-inner">
+    <div class="article-main">
+      <header class="article-header">
+        
+<div class="main-title-bar">
+  <div class="main-title-dot"></div>
+  
+    
+      <h1 itemprop="name">
+        <a class="p-name article-title" href="/2025/11/02/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-4/">demo_4打靶</a>
+      </h1>
+    
+  
+</div>
+
+        <div class='meta-info-bar'>
+          <div class="meta-info">
+  <time class="dt-published" datetime="2025-11-02T15:55:15.000Z" itemprop="datePublished">2025-11-02</time>
+</div>
+          <div class="need-seperator meta-info">
+            <div class="meta-cate-flex">
+  
+  <a class="meta-cate-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/">网络攻防实战</a>
+   
+</div>
+  
+          </div>
+          <div class="wordcount need-seperator meta-info">
+            4.3k words 
+          </div>
+        </div>
+        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2/" rel="tag">网络攻防</a></li></ul>
+
+      </header>
+      <div class="e-content article-entry" itemprop="articleBody">
+        
+          <div class="truncate-text">
+            
+              第 4 次实验：对demo4进行靶机渗透测试并获得 root 权限
+
+一、实验目的取得目标靶机 demo4 的 root 权限。将使用主机发现、端口扫描、文件上传漏洞、文件包含漏洞、一句话木马、反弹 shell 等攻击手段。
+
+二、实验内容1) 主机发现首先执行命令：
+12sudo -iarp-scan -l
+
+
+由此可以得到目标主机地址是 10.0.2.6。
+
+2) 端口发现与扫描对 10.0.2.6 进行端口扫描（进一步验证是否为靶机；如不需节省时间也可 nmap -p- 10.0.2.6）：
+1nmap 10.0.2.6
+
+
+进行服务探测以确认端口服务与版本：
+1nmap -p22,8080 -sV 10.0.2.6
+
+
+
+3) Web 渗透访问 10.0.2.6：
+
+提示需要输入用户名与密码。使用目录枚举（如未安装可先 apt install dirsearch）：
+1dirsearch -u http://10.0.2.6
+
+
+403 为无权访问，200 为探测成功。尝试访问 test.php：
+
+根据提示需为 file 提供参数。先用 GET 请求尝试读取 /etc/...
+            
+          </div>
+        
+      </div>
+
+         
+    </div>
+    
+     
+    <a class="right-panel  non-pic  "
+      
+      href="/2025/11/02/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-4/" 
+    >
+       
+      <i class="fa-solid fa-angle-right non-pic"></i>
+       
+    </a>
+     
+  </div>
+  
+</article>
+
+
+
+
+
+
    
 
 
@@ -334,7 +433,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.2k words 
+            2.1k words 
           </div>
         </div>
         
@@ -345,9 +444,7 @@
         
           <div class="truncate-text">
             
-              下面是把你提供的 LaTeX 内容等价整理为 Markdown（仅做排版转换，未改动技术步骤与结论）。可直接粘贴到 Hexo&#x2F;Markdown 编辑器使用。
-
-第 3 次实验：对demo3进行靶机渗透测试并获得 root 权限
+              第 3 次实验：对demo3进行靶机渗透测试并获得 root 权限
 一、实验目的
 取得目标靶机 demo3 的 root 权限。
 使用主机发现、端口扫描等等攻击手段。
@@ -371,7 +468,9 @@
 
 3) Web 渗透访问 10.0.2.5:8080，页面为“反病毒扫描”平台界面：
 
-启用 FoxyProxy → 打开 Burp S...
+启用 FoxyProxy → 打开 Burp Suite → 在 Proxy &#x2F; Intercept on 状态下随意输入凭据提交，右击拦截请求选择 Send to Intruder：
+
+在 Intruder...
             
           </div>
         
@@ -950,92 +1049,6 @@ ChatGPT给我的建议：
     <a class="right-panel  non-pic  "
       
       href="/2025/04/06/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%B7%A5%E5%85%B7%E9%93%BE%EF%BC%88numpy-pandas%EF%BC%89/" 
-    >
-       
-      <i class="fa-solid fa-angle-right non-pic"></i>
-       
-    </a>
-     
-  </div>
-  
-</article>
-
-
-
-
-
-
-   
-
-
-<article id="post-2-3构造函数与析构函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-   
-  <div class="article-inner">
-    <div class="article-main">
-      <header class="article-header">
-        
-<div class="main-title-bar">
-  <div class="main-title-dot"></div>
-  
-    
-      <h1 itemprop="name">
-        <a class="p-name article-title" href="/2025/03/01/2-3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/">2.3构造函数与析构函数</a>
-      </h1>
-    
-  
-</div>
-
-        <div class='meta-info-bar'>
-          <div class="meta-info">
-  <time class="dt-published" datetime="2025-03-01T11:48:31.000Z" itemprop="datePublished">2025-03-01</time>
-</div>
-          <div class="need-seperator meta-info">
-            <div class="meta-cate-flex">
-  
-  <a class="meta-cate-link" href="/categories/%E9%AB%98%E7%A8%8B/">高程</a>
-   
-</div>
-  
-          </div>
-          <div class="wordcount need-seperator meta-info">
-            4.8k words 
-          </div>
-        </div>
-        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%AB%98%E7%A8%8B/" rel="tag">高程</a></li></ul>
-
-      </header>
-      <div class="e-content article-entry" itemprop="articleBody">
-        
-          <div class="truncate-text">
-            
-              2.3构造函数与析构函数
-构造函数与析构函数：通俗版解释
-1. 构造函数：对象的“出生证明”
-作用：在对象创建时，自动初始化数据成员。
-特点：
-名字与类名相同（如Dog()）。
-无返回值（连void都没有）。
-可以重载（多个构造函数，按参数不同区分）。
-创建对象时，构造函数会被自动调用！！
-
-
-
-例子：
-
-1234567891011class Dog &#123;private:    string name;    int age;public:    Dog() &#123; name = &quot;无名&quot;; age = 0; &#125;         // 默认构造函数    Dog(string n, int a) &#123; name = n; age = a; &#125; // 带参数的构造函数&#125;;**Dog d1;          // 调用默认构造函数：name=&quot;无名&quot;, age=0**Dog d2(&quot;旺财&quot;, 3); // 调用带参数的构造函数：name=&quot;旺财&quot;, a...
-            
-          </div>
-        
-      </div>
-
-         
-    </div>
-    
-     
-    <a class="right-panel  non-pic  "
-      
-      href="/2025/03/01/2-3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/" 
     >
        
       <i class="fa-solid fa-angle-right non-pic"></i>

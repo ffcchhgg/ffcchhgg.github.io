@@ -20,12 +20,12 @@
   <link rel="preload" href="/css/fonts/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
   <link rel="preload" href="/css/fonts/Roboto-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
-  <meta name="description" content="下面是把你提供的 LaTeX 内容等价整理为 Markdown（仅做排版转换，未改动技术步骤与结论）。可直接粘贴到 Hexo&#x2F;Markdown 编辑器使用。  第 3 次实验：对demo3进行靶机渗透测试并获得 root 权限 一、实验目的 取得目标靶机 demo3 的 root 权限。 使用主机发现、端口扫描等等攻击手段。   二、实验内容1) 主机发现首先执行命令： 12sudo -">
+  <meta name="description" content="第 3 次实验：对demo3进行靶机渗透测试并获得 root 权限 一、实验目的 取得目标靶机 demo3 的 root 权限。 使用主机发现、端口扫描等等攻击手段。   二、实验内容1) 主机发现首先执行命令： 12sudo -iarp-scan -l   由此得到目标主机地址为 10.0.2.5。  2) 端口发现与扫描执行以下命令对目标进行扫描（进一步验证是否为靶机；如不考虑时间可 nmap">
 <meta property="og:type" content="article">
 <meta property="og:title" content="demo_3打靶">
 <meta property="og:url" content="https://www.ffcchhgg.cn/2025/10/22/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="下面是把你提供的 LaTeX 内容等价整理为 Markdown（仅做排版转换，未改动技术步骤与结论）。可直接粘贴到 Hexo&#x2F;Markdown 编辑器使用。  第 3 次实验：对demo3进行靶机渗透测试并获得 root 权限 一、实验目的 取得目标靶机 demo3 的 root 权限。 使用主机发现、端口扫描等等攻击手段。   二、实验内容1) 主机发现首先执行命令： 12sudo -">
+<meta property="og:description" content="第 3 次实验：对demo3进行靶机渗透测试并获得 root 权限 一、实验目的 取得目标靶机 demo3 的 root 权限。 使用主机发现、端口扫描等等攻击手段。   二、实验内容1) 主机发现首先执行命令： 12sudo -iarp-scan -l   由此得到目标主机地址为 10.0.2.5。  2) 端口发现与扫描执行以下命令对目标进行扫描（进一步验证是否为靶机；如不考虑时间可 nmap">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-1.png">
 <meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-2.png">
@@ -49,7 +49,7 @@
 <meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-20.png">
 <meta property="og:image" content="https://www.ffcchhgg.cn/imgff/demo-3-21.png">
 <meta property="article:published_time" content="2025-10-22T12:39:28.000Z">
-<meta property="article:modified_time" content="2025-10-30T05:17:32.578Z">
+<meta property="article:modified_time" content="2025-11-02T16:01:25.105Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="网络攻防">
 <meta property="article:tag" content="Linux">
@@ -193,7 +193,7 @@
         
             <a class="category-link" href="/categories/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/">
                 网络攻防实战
-                <div class="category-count">4</div>
+                <div class="category-count">5</div>
             </a>
         </div>
     </div>
@@ -217,6 +217,12 @@
       <h3 class="widget-title">Recent Posts</h3>
       <ul>
         
+          <a class="recent-link" href="/2025/11/02/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-4/" title="demo_4打靶" >
+            <div class="recent-link-text">
+              demo_4打靶
+            </div>
+          </a>
+        
           <a class="recent-link" href="/2025/10/29/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/README/" title="README" >
             <div class="recent-link-text">
               README
@@ -238,12 +244,6 @@
           <a class="recent-link" href="/2025/10/10/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/demo-1/" title="demo_1打靶" >
             <div class="recent-link-text">
               demo_1打靶
-            </div>
-          </a>
-        
-          <a class="recent-link" href="/2025/08/07/ICS-PA1-%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA/" title="ICS-PA1-最简单的计算机" >
-            <div class="recent-link-text">
-              ICS-PA1-最简单的计算机
             </div>
           </a>
         
@@ -291,7 +291,7 @@
   
           </div>
           <div class="wordcount need-seperator meta-info">
-            2.2k words 
+            2.1k words 
           </div>
         </div>
         
@@ -300,9 +300,7 @@
       </header>
       <div class="e-content article-entry" itemprop="articleBody">
         
-          <p>下面是把你提供的 LaTeX 内容<strong>等价整理</strong>为 Markdown（仅做排版转换，未改动技术步骤与结论）。可直接粘贴到 Hexo&#x2F;Markdown 编辑器使用。</p>
-<hr>
-<p><strong>第 3 次实验：对demo3进行靶机渗透测试并获得 root 权限</strong></p>
+          <p><strong>第 3 次实验：对demo3进行靶机渗透测试并获得 root 权限</strong></p>
 <h2 id="一、实验目的"><a href="#一、实验目的" class="headerlink" title="一、实验目的"></a>一、实验目的</h2><ul>
 <li>取得目标靶机 <strong>demo3</strong> 的 <strong>root</strong> 权限。</li>
 <li>使用主机发现、端口扫描等等攻击手段。</li>
